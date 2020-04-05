@@ -33,6 +33,8 @@ game = new Phaser.Game(config);
 function preload ()
 {
     console.log("PRELOAD");
+
+
     
     // LOAD PNG MAPS
     // this.load.image('ingalls', 'assets/ingalls3.png');
@@ -46,6 +48,9 @@ function preload ()
     
     // LOAD PLAYER
     this.load.image('player', 'assets/person.png');
+
+    // LOAD OTHER IMAGES
+    this.load.image('star', 'assets/star.png');
 }
 
 function create ()
@@ -53,27 +58,29 @@ function create ()
     console.log("CREATE");
     cursors = this.input.keyboard.createCursorKeys();
 
+    // CONSTANTS
+    PLAYER_HEIGHT = 25;
+    PLAYER_WIDTH = 15;
+    PLAYER_SPEED = 25;
+    STAR_HEIGHT = 20;
+    STAR_WIDTH = 20;
+    MAP_TOP = 0;
+
     //this.world.setBounds(600, 500, 1920, 1200);
     //size.setTo(600, 500, 1920, 1200);
     //map = this.add.image(config.width/2, config.height/2, 'diag');
     map = this.add.image(config.width/2, config.height/2, 'diag');
     map.setDisplaySize(config.width, config.height);
-    map_top = 0;
-    map_bottom = map.height;
     // initial map = diag
     curr_map_num = 1;
     map_list = ['ingalls', 'diag', 'south'];
     player = this.add.sprite(600, 500, 'player');
-    player.setDisplaySize(30, 50);
+    player.setDisplaySize(PLAYER_WIDTH, PLAYER_HEIGHT);
 
-    PLAYER_SPEED = 25;
-    // var elephant = this.add.image(600, 500, 'ele');
-    // elephant.scale.setTo(0.01, 0.01);
-    //this.camera.focusOnXY(600, 500);
-    //this.cameras.main.zoom = 1.2;
-    // console.log(cursors);
-    // console.log("player loc", player.x, player.y);
-    // console.log("map loc", map.x, map.y, map_right);
+    // starting map setup
+    mason_hall = this.add.image(250, 300, 'star');
+    mason_hall.setDisplaySize(STAR_WIDTH, STAR_HEIGHT);
+    
 
 }
 
@@ -103,7 +110,7 @@ function update ()
     if (cursors.up.isDown)
     {
         // only let player move down off screen if there's another map below
-        if (!(player.y <= 0 && curr_map_num === 0)) {
+        if (!(player.y <= MAP_TOP && curr_map_num === 0)) {
             console.log("player loc", player.x, player.y);
             //this.cameras.main.y += 4;
             player.y -= PLAYER_SPEED;
@@ -113,7 +120,7 @@ function update ()
     else if (cursors.down.isDown)
     {
         // only let player move down off screen if there's another map below
-        if (!(player.y >= map_bottom && curr_map_num === map_list.length - 1)) {
+        if (!(player.y >= config.height && curr_map_num === map_list.length - 1)) {
             console.log("player loc", player.x, player.y);
             //this.cameras.main.y += 4;
             player.y += PLAYER_SPEED;
@@ -123,7 +130,7 @@ function update ()
     if (cursors.left.isDown)
     {
         //stop allowing player to move at edge of game
-        if (!(player.x <= 0)) {
+        if (!(player.x <= MAP_TOP)) {
             console.log("player loc", player.x, player.y);
             //this.cameras.main.x -= 4;
             player.x -= PLAYER_SPEED;
@@ -149,11 +156,11 @@ function update ()
         map = this.add.image(config.width/2, config.height/2, map_list[curr_map_num]);
         map.setDisplaySize(config.width, config.height);
         console.log("NEW MAP dimensions", map.width, map.height);
-        player = this.add.image(player.x, 0, 'player');
-        player.setDisplaySize(30, 50);
+        player = this.add.image(player.x, MAP_TOP, 'player');
+        player.setDisplaySize(PLAYER_WIDTH, PLAYER_HEIGHT);
     }
     // update map: top
-    else if (player.y <= map_top && curr_map_num !== 0) {
+    else if (player.y <= MAP_TOP && curr_map_num !== 0) {
         map.destroy();
         player.destroy();
         curr_map_num -= 1;
@@ -161,6 +168,6 @@ function update ()
         map.setDisplaySize(config.width, config.height);
         console.log("NEW MAP dimensions", map.width, map.height);
         player = this.add.image(player.x, config.height, 'player');
-        player.setDisplaySize(30, 50);
+        player.setDisplaySize(PLAYER_WIDTH, PLAYER_HEIGHT);
     }
 }
