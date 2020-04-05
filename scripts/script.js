@@ -1,7 +1,11 @@
+const ratio = Math.max(window.innerWidth / window.innerHeight, window.innerHeight / window.innerWidth);
+const DEFAULT_HEIGHT = 720; // any height you want
+const DEFAULT_WIDTH = ratio * DEFAULT_HEIGHT;
+
 var config = {
     type: Phaser.CANVAS,
-    width: 1415,
-    height: 880,
+    width: DEFAULT_WIDTH,
+    height: DEFAULT_HEIGHT,
     physics: {
         default: 'arcade',
         arcade: {
@@ -12,8 +16,16 @@ var config = {
         preload: preload,
         create: create,
         update: update,
-    }
+    },
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        width: DEFAULT_WIDTH,
+        height: DEFAULT_HEIGHT
+    },
 };
+
+
 
 game = new Phaser.Game(config);
 //var size = new Phaser.Rectangle();
