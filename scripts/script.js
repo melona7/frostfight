@@ -43,7 +43,7 @@ function preload ()
     
     // LOAD SVG MAPS
     this.load.svg('ingalls', 'assets/ingalls.svg');
-    this.load.svg('diag', 'assets/diag.svg');
+    this.load.svg('diag', 'assets/diag3.svg');
     this.load.svg('south', 'assets/south.svg');
     
     // LOAD PLAYER
