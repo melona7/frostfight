@@ -9,8 +9,8 @@
         <script>
         var config = {
             type: Phaser.CANVAS,
-            width: 1500,
-            height: 900,
+            width: 1415,
+            height: 880,
             physics: {
                 default: 'arcade',
                 arcade: {
@@ -32,14 +32,14 @@
             console.log("PRELOAD");
             
             // LOAD PNG MAPS
-            this.load.image('ingalls', 'assets/ingalls3.png');
-            this.load.image('diag', 'assets/diag3.png');
-            this.load.image('south', 'assets/south3.png');
+            // this.load.image('ingalls', 'assets/ingalls3.png');
+            // this.load.image('diag', 'assets/diag3.png');
+            // this.load.image('south', 'assets/south3.png');
             
             // LOAD SVG MAPS
-            // this.load.image('ingalls', 'assets/ingalls.svg');
-            // this.load.image('diag', 'assets/diag.svg');
-            // this.load.image('south', 'assets/south.svg');
+            this.load.image('ingalls', 'assets/ingalls.svg');
+            this.load.image('diag', 'assets/diag.svg');
+            this.load.image('south', 'assets/south.svg');
             
             // LOAD PLAYER
             this.load.image('player', 'assets/person.png');
@@ -63,7 +63,7 @@
             player = this.add.sprite(600, 500, 'player');
             player.setDisplaySize(30, 50);
 
-            PLAYER_SPEED = 4;
+            PLAYER_SPEED = 25;
             // var elephant = this.add.image(600, 500, 'ele');
             // elephant.scale.setTo(0.01, 0.01);
             //this.camera.focusOnXY(600, 500);
@@ -96,7 +96,6 @@
 
         function update () 
         {
-            console.log("UPDATE RUNNING");
             // MOVE PLAYER WITH ARROW KEYS
             if (cursors.up.isDown)
             {
@@ -130,7 +129,7 @@
             else if (cursors.right.isDown)
             {
                 // stop allowing player to move at edge of game
-                if (!(player.x >= map.width)) {
+                if (!(player.x >= config.width)) {
                     console.log("player loc", player.x, player.y);
                     //this.cameras.main.x -= 4;
                     player.x += PLAYER_SPEED;
@@ -140,7 +139,7 @@
 
             // SWITCH BETWEEN MAPS
             // update map: bottom
-            if (player.y >= map_bottom && curr_map_num !== map_list.length - 1) {
+            if (player.y >= config.height && curr_map_num !== map_list.length - 1) {
                 map.destroy();
                 player.destroy();
                 curr_map_num += 1;
@@ -158,7 +157,7 @@
                 map = this.add.image(config.width/2, config.height/2, map_list[curr_map_num]);
                 map.setDisplaySize(config.width, config.height);
                 console.log("NEW MAP dimensions", map.width, map.height);
-                player = this.add.image(player.x, map.height, 'player');
+                player = this.add.image(player.x, config.height, 'player');
                 player.setDisplaySize(30, 50);
             }
         }
