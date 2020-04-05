@@ -10,7 +10,7 @@
         var config = {
             type: Phaser.CANVAS,
             width: 1500,
-            height: 850,
+            height: 900,
             physics: {
                 default: 'arcade',
                 arcade: {
@@ -30,17 +30,19 @@
         function preload ()
         {
             console.log("PRELOAD");
-            //this.load.setBaseURL('http://labs.phaser.io');
-    
-            //this.load.image('sky', 'assets/skies/space3.png');
-            //this.load.image('logo', 'assets/sprites/phaser3-logo.png');
-            //this.load.image('ele', 'assets/thispic.png');
-            //this.load.image('red', 'assets/particles/red.png');
-            this.load.image('ingalls', 'assets/ingalls.svg');
-            this.load.image('diag', 'assets/diag2.png');
-            this.load.image('south', 'assets/south.svg');
+            
+            // LOAD PNG MAPS
+            this.load.image('ingalls', 'assets/ingalls3.png');
+            this.load.image('diag', 'assets/diag3.png');
+            this.load.image('south', 'assets/south3.png');
+            
+            // LOAD SVG MAPS
+            // this.load.image('ingalls', 'assets/ingalls.svg');
+            // this.load.image('diag', 'assets/diag.svg');
+            // this.load.image('south', 'assets/south.svg');
+            
+            // LOAD PLAYER
             this.load.image('player', 'assets/person.png');
-            //this.load.image('testmap', 'assets/map.svg');
         }
     
         function create ()
@@ -61,7 +63,7 @@
             player = this.add.sprite(600, 500, 'player');
             player.setDisplaySize(30, 50);
 
-            PLAYER_SPEED = 10;
+            PLAYER_SPEED = 4;
             // var elephant = this.add.image(600, 500, 'ele');
             // elephant.scale.setTo(0.01, 0.01);
             //this.camera.focusOnXY(600, 500);
@@ -72,6 +74,8 @@
 
         }
 
+        // NOTE: function below written out in update()
+        //       couldn't access "this" or "game" within
         // function change_map(game, player, map, curr_map_num, change_loc) {
         //     if (change_loc === "BOTTOM") {
         //         map.destroy();
@@ -93,6 +97,7 @@
         function update () 
         {
             console.log("UPDATE RUNNING");
+            // MOVE PLAYER WITH ARROW KEYS
             if (cursors.up.isDown)
             {
                 // only let player move down off screen if there's another map below
@@ -133,6 +138,7 @@
                 
             }
 
+            // SWITCH BETWEEN MAPS
             // update map: bottom
             if (player.y >= map_bottom && curr_map_num !== map_list.length - 1) {
                 map.destroy();
@@ -155,41 +161,7 @@
                 player = this.add.image(player.x, map.height, 'player');
                 player.setDisplaySize(30, 50);
             }
-
-            // if (player.x >= map_bottom) {
-            //     // console.log("right edge");
-            //     // map = this.add.image(600, 500, 'ele');
-            //     // player = this.add.image(0, player.y, 'player');
-            //     // player.setDisplaySize(30, 50);
-            //     change_map(game, player, map, curr_map_num, "BOTTOM");
-            // }
-
-            // else if (player.y <= map_top) {
-            //     // replace with upper map
-            //     // map = this.add.image(600, 500, 'ingalls');
-            //     // map.setDisplaySize(1200, 1000);
-            //     // player = this.add.image(player.x, map.y+map.height/2, 'player');
-            //     // player.setDisplaySize(30, 50);
-            //     change_map(game, player, map, curr_map_num, "TOP");
-            // }
         }
-            //this.add.image
-    
-            // var particles = this.add.particles('red');
-    
-            // var emitter = particles.createEmitter({
-            //     speed: 100,
-            //     scale: { start: 1, end: 0 },
-            //     blendMode: 'ADD'
-            // });
-    
-            // var logo = this.physics.add.image(400, 100, 'logo');
-    
-            // logo.setVelocity(100, 200);
-            // logo.setBounce(1, 1);
-            // logo.setCollideWorldBounds(true);
-    
-            // emitter.startFollow(logo);
         </script>
     </body>
 </html>
