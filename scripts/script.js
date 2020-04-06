@@ -21,6 +21,9 @@ const config = {
         arcade: {
           gravity: { y: 0 } // Top down game, so no gravity
         }
+    }, 
+    scale: {
+        autoCenter: Phaser.Scale.CENTER_BOTH
     }
   };
   
@@ -31,6 +34,8 @@ let player;
   
   function preload() {
     // "this" === Phaser.Scene
+
+    
    
     this.load.image("tiles", "tiles/campus_set.png");
     this.load.tilemapTiledJSON("map", "tiles/CampusMap.json");
@@ -39,6 +44,8 @@ let player;
   
   function create() {
     // You can access the game's config to read the width & height
+   
+
     const { width, height } = this.sys.game.config;
     var map = this.make.tilemap({ key: 'map' });
     const tileset = map.addTilesetImage("campus_set", "tiles");
