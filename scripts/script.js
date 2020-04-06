@@ -121,7 +121,7 @@ worldLayer.renderDebug(debugGraphics, {
 
   // Help text that has a "fixed" position on the screen
   this.add
-    .text(16, 16, "Arrow keys to scroll", {
+    .text(16, 16, "Use arrow keys to move", {
       font: "18px monospace",
       fill: "#ffffff",
       padding: { x: 20, y: 10 },
