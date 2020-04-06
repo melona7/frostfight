@@ -10,7 +10,7 @@ const config = {
     height: 500,
     backgroundColor: "#222222",
     parent: "game-container",
-    antialias: false,
+    pixelArt: true,
     scene: {
       preload: preload,
       create: create,
@@ -46,7 +46,7 @@ let player;
     // You can access the game's config to read the width & height
    
 
-    const { width, height } = this.sys.game.config;
+    
     var map = this.make.tilemap({ key: 'map' });
     const tileset = map.addTilesetImage("campus_set", "tiles");
     const worldLayer = map.createStaticLayer("Tile Layer 1", tileset, 0, 0);
