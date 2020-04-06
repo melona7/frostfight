@@ -50,7 +50,7 @@ let player;
     player = this.physics.add
     .sprite(spawnPoint.x, spawnPoint.y, "atlas", "freshman_front_standing.png")
     .setSize(16, 16)
-    .setOffset(0, 16);
+    .setOffset(20, 50);
 
     player.setBounce(0.2);
 
@@ -104,7 +104,13 @@ let player;
 //   });
 
   // Constrain the camera so that it isn't allowed to move outside the width/height of tilemap
-  camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+  this.physics.world.createDebugGraphic();
+  const debugGraphics = this.add.graphics().setAlpha(0.75);
+worldLayer.renderDebug(debugGraphics, {
+  tileColor: null, // Color of non-colliding tiles
+  collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+  faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+});
 
   // Help text that has a "fixed" position on the screen
   this.add
