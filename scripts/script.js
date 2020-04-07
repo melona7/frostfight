@@ -57,6 +57,8 @@ let stars;
     // You can access the game's config to read the width & height
    this.add.image(400, 100, 'heatBar');
 
+   possible_destinations = ['Hatcher Library', 'Mason Hall'];
+
     
     var map = this.make.tilemap({ key: 'map' });
     const tileset = map.addTilesetImage("campus_set", "tiles");
@@ -203,7 +205,19 @@ worldLayer.renderDebug(debugGraphics, {
     .sprite(object.x, object.y, "star_atlas", "star_0.png").play("star", true);
     stars.add(star);
 
-    
+
+    dest_idx = Math.round(Math.random());
+    final_destination = possible_destinations[dest_idx];
+
+    dest_text = this.add
+    .text(325, 35, "Destination: " + final_destination, {
+        font: "16px monospace",
+        fill: "#ffffff",
+        padding: { x: 5, y: 5 },
+        backgroundColor: "#000000"
+    })
+    .setScrollFactor(0);
+
 
         
 
@@ -254,7 +268,7 @@ worldLayer.renderDebug(debugGraphics, {
         callbackScope: this,
         loop: true
     });
- 
+      console.log("STARS", stars);
       this.physics.add.overlap(player, stars, build, null, this);
 
   }
@@ -278,7 +292,6 @@ worldLayer.renderDebug(debugGraphics, {
     // console.log("width", heatBar.width);
     // heatBar.setDisplaySize(heatBar.width, 30);
     player.body.setVelocityX(100);
-    console.log(collision);
   }
 
   // Vertical movement
