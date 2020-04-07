@@ -39,7 +39,7 @@ let overlapObjectsGroup;
 
     
     this.load.image("energycontainer", "assets/heatco.png");
-    this.load.image("energybar", "assets/hearba.png");
+    this.load.image("energybar", "assets/heatba.png");
     this.load.image("tiles", "tiles/campus_set.png");
     this.load.tilemapTiledJSON("map", "tiles/CampusMap.json");
     this.load.atlas("atlas", "sprites/freshman_sprite_sheet.png", "sprites/freshman_sprite_sheet.json");
