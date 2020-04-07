@@ -203,6 +203,7 @@ worldLayer.renderDebug(debugGraphics, {
   
     star = this.physics.add
     .sprite(object.x, object.y, "star_atlas", "star_0.png").play("star", true);
+    star.name = object.name;
     stars.add(star);
 
 
@@ -273,8 +274,10 @@ worldLayer.renderDebug(debugGraphics, {
 
   }
 
-  function build() {
-      console.log("hi");
+  function build(player, star) {
+
+      console.log(star.name);
+      console.log(star.x, star.y); 
   }
   
   function update(time, delta) {
@@ -292,6 +295,7 @@ worldLayer.renderDebug(debugGraphics, {
     // console.log("width", heatBar.width);
     // heatBar.setDisplaySize(heatBar.width, 30);
     player.body.setVelocityX(100);
+    //console.log(collision);
   }
 
   // Vertical movement
