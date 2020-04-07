@@ -315,7 +315,7 @@ function update(time, delta) {
   const config_panel = {
     type: Phaser.AUTO,
     width: 800,
-    height: 200,
+    height: 50,
     backgroundColor: "#222222",
     parent: "panel-container",
     pixelArt: true,
