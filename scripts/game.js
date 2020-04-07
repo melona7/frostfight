@@ -1,5 +1,5 @@
-import mainGame from '/main.js'; 
-let gameScene = new mainGame; 
+
+//let gameScene = new main; 
 
 const config = {
     type: Phaser.AUTO,
@@ -8,6 +8,7 @@ const config = {
     backgroundColor: "#222222",
     parent: "game-container",
     pixelArt: true,
+    scene: [main],
     physics: {
         default: "arcade",
         arcade: {
@@ -20,5 +21,5 @@ const config = {
 };
   
 const game = new Phaser.Game(config);
-game.scene.add('gameScene', gameScene);
-game.scene.start('gameScene');
+// game.scene.add('gameScene', gameScene);
+// game.scene.start('gameScene');
