@@ -221,7 +221,7 @@ worldLayer.renderDebug(debugGraphics, {
         loop: true
     });
  
-    
+      this.physics.add.overlap(player, overlapObjectsGroup, build, null, this);
 
   }
 
@@ -274,6 +274,5 @@ worldLayer.renderDebug(debugGraphics, {
     else if (prevVelocity.y > 0) player.setTexture("atlas", "freshman_front_standing.png");
   }
 
-  this.physics.add.overlap(player, overlapObjectsGroup, build, null, this);
 
   }
