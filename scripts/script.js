@@ -38,8 +38,8 @@ let overlapObjectsGroup;
     // "this" === Phaser.Scene
 
     
-    this.load.image("energycontainer", "assets/energycontainer.png");
-    this.load.image("energybar", "assets/energybar.png");
+    this.load.image("energycontainer", "assets/heatco.png");
+    this.load.image("energybar", "assets/hearba.png");
     this.load.image("tiles", "tiles/campus_set.png");
     this.load.tilemapTiledJSON("map", "tiles/CampusMap.json");
     this.load.atlas("atlas", "sprites/freshman_sprite_sheet.png", "sprites/freshman_sprite_sheet.json");
@@ -73,45 +73,7 @@ let overlapObjectsGroup;
     
     camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-    let timeLeft = gameOptions.initialTime;
-
-    // the energy container. A simple sprite
-    let energyContainer = this.add.sprite(400, 100, "energycontainer").setScrollFactor(0);
-
-    // the energy bar. Another simple sprite
-    let energyBar = this.add.sprite(energyContainer.x + 46, energyContainer.y, "energybar").setScrollFactor(0);
-
-    // a copy of the energy bar to be used as a mask. Another simple sprite but...
-    let energyMask = this.add.sprite(energyBar.x, energyBar.y, "energybar").setScrollFactor(0);
-
-    // ...it's not visible...
-    energyMask.visible = false;
-
-    // and we assign it as energyBar's mask.
-    energyBar.mask = new Phaser.Display.Masks.BitmapMask(this, energyMask);
-
-    // a boring timer.
-    let gameTimer = this.time.addEvent({
-        delay: 1000,
-        callback: function(){
-            console.log("lmao");
-            timeLeft --;
-
-            // dividing enery bar width by the number of seconds gives us the amount
-            // of pixels we need to move the energy bar each second
-            let stepWidth = energyMask.displayWidth / gameOptions.initialTime;
-
-            // moving the mask
-            
-            energyMask.x -= stepWidth;
-            console.log(energyMask.x);
-            if(timeLeft == 0){
-               //stop somehow lol
-            }
-        },
-        callbackScope: this,
-        loop: true
-    });
+    
 
  
     const anims = this.anims;
@@ -163,14 +125,14 @@ worldLayer.renderDebug(debugGraphics, {
 });
 
   // Help text that has a "fixed" position on the screen
-  this.add
-    .text(16, 16, "Use arrow keys to move", {
-      font: "18px monospace",
-      fill: "#ffffff",
-      padding: { x: 20, y: 10 },
-      backgroundColor: "#000000"
-    })
-    .setScrollFactor(0);
+//   this.add
+//     .text(16, 16, "Use arrow keys to move", {
+//       font: "18px monospace",
+//       fill: "#ffffff",
+//       padding: { x: 20, y: 10 },
+//       backgroundColor: "#000000"
+//     })
+//     .setScrollFactor(0);
   
     // Creating a repeating background sprite
   
@@ -194,7 +156,45 @@ worldLayer.renderDebug(debugGraphics, {
     console.log(overlapObjectsGroup);
 
     
-    
+    let timeLeft = gameOptions.initialTime;
+
+    // the energy container. A simple sprite
+    let energyContainer = this.add.sprite(170, 50, "energycontainer").setScrollFactor(0);
+
+    // the energy bar. Another simple sprite
+    let energyBar = this.add.sprite(energyContainer.x + 12, energyContainer.y, "energybar").setScrollFactor(0);
+
+    // a copy of the energy bar to be used as a mask. Another simple sprite but...
+    let energyMask = this.add.sprite(energyBar.x, energyBar.y, "energybar").setScrollFactor(0);
+
+    // ...it's not visible...
+    energyMask.visible = false;
+
+    // and we assign it as energyBar's mask.
+    energyBar.mask = new Phaser.Display.Masks.BitmapMask(this, energyMask);
+
+    // a boring timer.
+    let gameTimer = this.time.addEvent({
+        delay: 1000,
+        callback: function(){
+            console.log("lmao");
+            timeLeft --;
+
+            // dividing enery bar width by the number of seconds gives us the amount
+            // of pixels we need to move the energy bar each second
+            let stepWidth = energyMask.displayWidth / gameOptions.initialTime;
+
+            // moving the mask
+            
+            energyMask.x -= stepWidth;
+            console.log(energyMask.x);
+            if(timeLeft == 0){
+               //stop somehow lol
+            }
+        },
+        callbackScope: this,
+        loop: true
+    });
  
     
 
