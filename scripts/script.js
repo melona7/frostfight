@@ -325,3 +325,39 @@ function update(time, delta) {
 
 
   }
+
+  const config_panel = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 50,
+    backgroundColor: "#222222",
+    parent: "panel-container",
+    pixelArt: true,
+    scene: {
+      preload: preload_panel,
+      create: create_panel,
+      update: update_panel
+    },
+    physics: {
+        default: "arcade",
+        arcade: {
+          gravity: { y: 0 } 
+        }
+    }, 
+    scale: {
+        autoCenter: Phaser.Scale.CENTER_BOTH
+    }
+};
+  
+const panel = new Phaser.Game(config_panel);
+
+function preload_panel() {
+
+}
+
+function create_panel() {
+
+}
+
+function update_panel(time, delta) {
+}
