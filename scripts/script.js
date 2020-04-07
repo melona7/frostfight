@@ -33,6 +33,8 @@ const config = {
   let cursors;
 let player;
 let overlapObjectsGroup;
+let star;
+let stars;
   
   function preload() {
     // "this" === Phaser.Scene
@@ -44,8 +46,11 @@ let overlapObjectsGroup;
     this.load.tilemapTiledJSON("map", "tiles/CampusMap.json");
     this.load.atlas("atlas", "sprites/freshman_sprite_sheet.png", "sprites/freshman_sprite_sheet.json");
 
+    this.load.atlas("star_atlas", "sprites/star/star_sheet.png", "sprites/star/star_sheet.json");
+
     this.load.image("heatBar", "assets/gradient.png");
     this.load.image("background", "assets/background.png");
+    this.load.audio('background_music', "audio/FightSong.mp3");
   }
   
   function create() {
@@ -59,6 +64,9 @@ let overlapObjectsGroup;
 
     worldLayer.setCollisionByProperty({ collides: true });
     const spawnPoint = map.findObject("Objects", obj => obj.name === "Spawn Point");
+
+
+    
 
     player = this.physics.add
     .sprite(spawnPoint.x, spawnPoint.y, "atlas", "freshman_front_standing.png")
@@ -78,6 +86,10 @@ let overlapObjectsGroup;
     camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
     
+
+    
+
+
 
  
     const anims = this.anims;
@@ -165,20 +177,42 @@ worldLayer.renderDebug(debugGraphics, {
     var buildings;
     var overlapObjects = map.getObjectLayer('buildings')['objects'];
     console.log(overlapObjects);
+    stars = this.physics.add.group();
 
-    overlapObjectsGroup = this.physics.add.staticGroup();
-    let i = 0;
+    // overlapObjectsGroup = this.physics.add.staticGroup();
+    // let i = 0;
+    const star_anims = this.anims;
+    star_anims.create({
+        key: "star",
+        frames: anims.generateFrameNames("star_atlas", { prefix: "star_", suffix: '.png', start: 0, end: 4, zeroPad: 1 }),
+        frameRate: 10,
+        repeat: -1
+      });
+      // overlapObjectsGroup.refresh(); //physics body needs to refresh
+      // console.log(overlapObjectsGroup);
+      console.log(star_anims);
+
     overlapObjects.forEach(object => {
-    let obj = overlapObjectsGroup.create(object.x, object.y, 'buildings');
-        obj.setScale(object.width/32, object.height/32); //my tile size was 32
-        obj.setOrigin(0); //the positioning was off, and B3L7 mentioned the default was 0.5
-        obj.body.width = object.width; //body of the physics body
-        obj.body.height = object.height;
+    // let obj = overlapObjectsGroup.create(object.x, object.y, 'buildings');
+    //     obj.setScale(object.width/32, object.height/32); //my tile size was 32
+    //     obj.setOrigin(0); //the positioning was off, and B3L7 mentioned the default was 0.5
+    //     obj.body.width = object.width; //body of the physics body
+    //     obj.body.height = object.height;
+  
+    star = this.physics.add
+    .sprite(object.x, object.y, "star_atlas", "star_0.png").play("star", true);
+    stars.add(star);
+
+    
+
+        
 
         
     });
-    overlapObjectsGroup.refresh(); //physics body needs to refresh
-    console.log(overlapObjectsGroup);
+
+    
+
+    
 
     
     let timeLeft = gameOptions.initialTime;
@@ -221,7 +255,7 @@ worldLayer.renderDebug(debugGraphics, {
         loop: true
     });
  
-      this.physics.add.overlap(player, overlapObjectsGroup, build, null, this);
+      this.physics.add.overlap(player, stars, build, null, this);
 
   }
 
@@ -239,6 +273,7 @@ worldLayer.renderDebug(debugGraphics, {
   // Horizontal movement
   if (cursors.left.isDown) {
     player.body.setVelocityX(-100);
+    
   } else if (cursors.right.isDown) {
     // console.log("width", heatBar.width);
     // heatBar.setDisplaySize(heatBar.width, 30);
@@ -273,6 +308,7 @@ worldLayer.renderDebug(debugGraphics, {
     else if (prevVelocity.y < 0) player.setTexture("atlas", "freshman_back_standing.png");
     else if (prevVelocity.y > 0) player.setTexture("atlas", "freshman_front_standing.png");
   }
+  
 
 
   }
