@@ -202,7 +202,7 @@ worldLayer.renderDebug(debugGraphics, {
     let gameTimer = this.time.addEvent({
         delay: 1000,
         callback: function(){
-            console.log("lmao");
+            //console.log("lmao");
             timeLeft --;
 
             // dividing enery bar width by the number of seconds gives us the amount
@@ -212,7 +212,7 @@ worldLayer.renderDebug(debugGraphics, {
             // moving the mask
             
             energyMask.x -= stepWidth;
-            console.log(energyMask.x);
+            //console.log(energyMask.x);
             if(timeLeft == 0){
                //stop somehow lol
             }
@@ -240,8 +240,8 @@ worldLayer.renderDebug(debugGraphics, {
   if (cursors.left.isDown) {
     player.body.setVelocityX(-100);
   } else if (cursors.right.isDown) {
-    console.log("width", heatBar.width);
-    heatBar.setDisplaySize(heatBar.width, 30);
+    // console.log("width", heatBar.width);
+    // heatBar.setDisplaySize(heatBar.width, 30);
     player.body.setVelocityX(100);
     console.log(collision);
   }
