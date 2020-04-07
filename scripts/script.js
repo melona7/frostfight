@@ -43,11 +43,14 @@ let overlapObjectsGroup;
     this.load.image("tiles", "tiles/campus_set.png");
     this.load.tilemapTiledJSON("map", "tiles/CampusMap.json");
     this.load.atlas("atlas", "sprites/freshman_sprite_sheet.png", "sprites/freshman_sprite_sheet.json");
+
+    this.load.image("heatBar", "assets/gradient.png");
+    this.load.image("background", "assets/background.png");
   }
   
   function create() {
     // You can access the game's config to read the width & height
-   
+   this.add.image(400, 100, 'heatBar');
 
     
     var map = this.make.tilemap({ key: 'map' });
@@ -65,7 +68,8 @@ let overlapObjectsGroup;
     player.setBounce(0.2);
 
 
-    this.physics.add.collider(player, worldLayer);
+    collision = this.physics.add.collider(player, worldLayer);
+    console.log("Collision info", collision);
 
     const camera = this.cameras.main;
     camera.startFollow(player);
@@ -124,6 +128,16 @@ worldLayer.renderDebug(debugGraphics, {
   faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
 });
 
+//   this.add
+//     .text(500, 500, "Add working", {
+//       font: "18px monospace",
+//       fill: "#ffffff",
+//       padding: { x: 100, y: 100 },
+//       backgroundColor: "#000000"
+//   }).setScrollFactor(0);
+//     //heatBar.setDisplaySize(500, 100);
+//     console.log("made it here");
+
   // Help text that has a "fixed" position on the screen
 //   this.add
 //     .text(16, 16, "Use arrow keys to move", {
@@ -133,6 +147,17 @@ worldLayer.renderDebug(debugGraphics, {
 //       backgroundColor: "#000000"
 //     })
 //     .setScrollFactor(0);
+  
+    
+    // hbBackground = this.add
+    // .image(625, 30, "background").setScrollFactor(0);
+    // hbBackground.setDisplaySize(330, 170);
+    
+    // heatBar = this.add
+    // .image(625, 30, "heatBar").setScrollFactor(0);
+    // heatBar.setDisplaySize(300, 30);
+    // decrease_var = 300 * 0.25;
+    // console.log("decrease", decrease_var);
   
     // Creating a repeating background sprite
   
@@ -215,7 +240,10 @@ worldLayer.renderDebug(debugGraphics, {
   if (cursors.left.isDown) {
     player.body.setVelocityX(-100);
   } else if (cursors.right.isDown) {
+    console.log("width", heatBar.width);
+    heatBar.setDisplaySize(heatBar.width, 30);
     player.body.setVelocityX(100);
+    console.log(collision);
   }
 
   // Vertical movement
