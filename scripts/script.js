@@ -30,7 +30,7 @@ const config = {
   const game = new Phaser.Game(config);
   let cursors;
 let player;
-
+let overlapObjectsGroup;
   
   function preload() {
     // "this" === Phaser.Scene
@@ -132,7 +132,33 @@ worldLayer.renderDebug(debugGraphics, {
     // Creating a repeating background sprite
   
     // In v3, you can chain many methods, so you can create text and configure it in one "line"
+    var buildings;
+    var overlapObjects = map.getObjectLayer('buildings')['objects'];
+    console.log(overlapObjects);
 
+    overlapObjectsGroup = this.physics.add.staticGroup();
+    let i = 0;
+    overlapObjects.forEach(object => {
+    let obj = overlapObjectsGroup.create(object.x, object.y, 'buildings');
+        obj.setScale(object.width/32, object.height/32); //my tile size was 32
+        obj.setOrigin(0); //the positioning was off, and B3L7 mentioned the default was 0.5
+        obj.body.width = object.width; //body of the physics body
+        obj.body.height = object.height;
+
+        
+    });
+    overlapObjectsGroup.refresh(); //physics body needs to refresh
+    console.log(overlapObjectsGroup);
+
+    
+    
+
+    
+
+  }
+
+  function build() {
+      console.log("hi");
   }
   
   function update(time, delta) {
@@ -176,4 +202,7 @@ worldLayer.renderDebug(debugGraphics, {
     else if (prevVelocity.y < 0) player.setTexture("atlas", "freshman_back_standing.png");
     else if (prevVelocity.y > 0) player.setTexture("atlas", "freshman_front_standing.png");
   }
+
+  this.physics.add.overlap(player, overlapObjectsGroup, build, null, this);
+
   }
