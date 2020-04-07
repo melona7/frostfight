@@ -1,8 +1,4 @@
-/**
- * Author: Michael Hadley, mikewesthad.com
- * Asset Credits:
- *  - Subtle Patterns
- */
+
 let gameOptions = {
     initialTime: 60
 }
@@ -21,22 +17,22 @@ const config = {
     physics: {
         default: "arcade",
         arcade: {
-          gravity: { y: 0 } // Top down game, so no gravity
+          gravity: { y: 0 } 
         }
     }, 
     scale: {
         autoCenter: Phaser.Scale.CENTER_BOTH
     }
-  };
+};
   
-  const game = new Phaser.Game(config);
-  let cursors;
+const game = new Phaser.Game(config);
+let cursors;
 let player;
 let overlapObjectsGroup;
 let star;
 let stars;
   
-  function preload() {
+function preload() {
     // "this" === Phaser.Scene
 
     
@@ -51,9 +47,9 @@ let stars;
     this.load.image("heatBar", "assets/gradient.png");
     this.load.image("background", "assets/background.png");
     this.load.audio('background_music', "audio/FightSong.mp3");
-  }
+}
   
-  function create() {
+function create() {
     // You can access the game's config to read the width & height
    this.add.image(400, 100, 'heatBar');
 
@@ -258,15 +254,15 @@ worldLayer.renderDebug(debugGraphics, {
  
       this.physics.add.overlap(player, stars, build, null, this);
 
-  }
+}
 
-  function build(player, star) {
+function build(player, star) {
 
       console.log(star.name);
       console.log(star.x, star.y); 
-  }
+}
   
-  function update(time, delta) {
+function update(time, delta) {
     // Apply the controls to the camera each update tick of the game
     // Stop any previous movement from the last frame
     const speed = 175;
@@ -274,15 +270,15 @@ worldLayer.renderDebug(debugGraphics, {
   player.body.setVelocity(0);
 
   // Horizontal movement
-  if (cursors.left.isDown) {
+    if (cursors.left.isDown) {
     player.body.setVelocityX(-100);
     
-  } else if (cursors.right.isDown) {
+    } else if (cursors.right.isDown) {
     // console.log("width", heatBar.width);
     // heatBar.setDisplaySize(heatBar.width, 30);
     player.body.setVelocityX(100);
     //console.log(collision);
-  }
+    }
 
   // Vertical movement
   if (cursors.up.isDown) {
