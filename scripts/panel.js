@@ -30,7 +30,6 @@ class panel extends Phaser.Scene {
     }
     create() {
         
-
         // start music
         music = this.sound.add('background_music');
         let music_config = 
@@ -112,7 +111,7 @@ class panel extends Phaser.Scene {
       })
 
       this.add
-      .text(550, 27, loc, {
+      .text(552, 27, loc, {
         font: "18px monospace",
         fill: "#000000",
       })
@@ -142,7 +141,7 @@ class panel extends Phaser.Scene {
       heatBar.mask = new Phaser.Display.Masks.BitmapMask(this, heatMask);
 
       time_text = this.add
-      .text(350, 27, "60", {
+      .text(360, 27, "60", {
         font: "18px monospace",
         fill: "#000000",
       })

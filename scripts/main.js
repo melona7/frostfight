@@ -151,6 +151,7 @@ class main extends Phaser.Scene {
         ycoord = star.y;
 
         this.scene.moveUp('infoScene');
+        this.scene.pause('panelScene');
 
     }
 

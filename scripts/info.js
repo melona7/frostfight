@@ -1,3 +1,5 @@
+//let new_cursors;
+
 class info extends Phaser.Scene {
 	constructor() {
         super({
@@ -19,7 +21,8 @@ class info extends Phaser.Scene {
 
         var win = this.add.zone(xcoord, ycoord, this.width, this.height).setInteractive().setOrigin(0);
 
-        this.add.text(xcoord, ycoord, 'Hello');
+        let message = "hello there, press any arrow key to continue playing";
+        this.add.text(xcoord, ycoord, message);
 
         //var demo = new func(handle, win);
 
@@ -34,10 +37,17 @@ class info extends Phaser.Scene {
 
         });
 
+        cursors = this.input.keyboard.createCursorKeys();
+
         //this.scene.add(handle, demo, true);
     }
     update() {
-
+        if (cursors.space.isDown || cursors.left.isDown || cursors.up.isDown || cursors.down.isDown) {
+            this.scene.resume('gameScene');
+            this.scene.resume('panelScene');
+            this.scene.moveDown('infoScene');
+            
+        }
     }
 }
 
