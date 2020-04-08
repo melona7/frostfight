@@ -4,6 +4,8 @@ let cursors;
 let star;
 let stars;
 let loc = "dana";
+let xcoord;
+let ycoord;
 
 class main extends Phaser.Scene {
     constructor() {
@@ -144,7 +146,11 @@ class main extends Phaser.Scene {
           console.log("hi there huns");
         }
         console.log(star.name);
-        console.log(star.x, star.y); 
+        //console.log(star.x, star.y); 
+        xcoord = star.x;
+        ycoord = star.y;
+
+        this.scene.start('infoScene');
 
     }
 

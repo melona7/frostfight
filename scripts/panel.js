@@ -34,7 +34,8 @@ class panel extends Phaser.Scene {
         music = this.sound.add('background_music');
         let music_config = 
         {
-            mute: false,
+        	//FIXME: change back for final game
+            mute: true,
             volume: 1,
             loop: true,
             delay: 0

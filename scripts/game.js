@@ -8,7 +8,7 @@ const config = {
     backgroundColor: "#dddde8",
     parent: "game-container",
     pixelArt: true,
-    scene: [splash, main, panel],
+    scene: [splash, info, main, panel],
     physics: {
         default: "arcade",
         arcade: {
