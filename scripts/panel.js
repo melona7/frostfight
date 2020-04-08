@@ -8,6 +8,8 @@ let mute_button;
 let home_button;
 let timeLeft;
 let time_text;
+loc = "dana";
+let music;
 
 class panel extends Phaser.Scene {
     constructor() {
@@ -29,7 +31,7 @@ class panel extends Phaser.Scene {
     create() {
         
         // start music
-        var music = this.sound.add('background_music');
+        music = this.sound.add('background_music');
         let music_config = 
         {
             mute: false,
@@ -103,6 +105,12 @@ class panel extends Phaser.Scene {
 
       this.add
       .text(450, 27, "Location:", {
+        font: "18px monospace",
+        fill: "#000000",
+      })
+
+      this.add
+      .text(550, 27, loc, {
         font: "18px monospace",
         fill: "#000000",
       })
@@ -193,6 +201,7 @@ class panel extends Phaser.Scene {
     home() {
       this.scene.stop('gameScene');
       this.scene.stop('panelScene');
+      music.stop();
       this.scene.switch('titleScene');
     }
 

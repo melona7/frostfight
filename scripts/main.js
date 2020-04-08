@@ -3,6 +3,7 @@ let collision;
 let cursors;
 let star;
 let stars;
+let loc = "dana";
 
 class main extends Phaser.Scene {
     constructor() {
@@ -139,6 +140,9 @@ class main extends Phaser.Scene {
     /* Call back to this function whenever there's overlap with player and stars */
     build(player, star) {
         //this.show_message(star);
+        if (star.name == loc) {
+          console.log("hi there huns");
+        }
         console.log(star.name);
         console.log(star.x, star.y); 
 
