@@ -8,7 +8,6 @@ let mute_button;
 let home_button;
 let timeLeft;
 let time_text;
-loc = "dana";
 let music;
 
 class panel extends Phaser.Scene {

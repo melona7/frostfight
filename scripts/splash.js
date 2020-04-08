@@ -4,6 +4,8 @@ class splash extends Phaser.Scene {
     }
     preload() {
         this.load.image('background', 'assets/Frostfight.png');
+        this.load.image('start', 'assets/start_button2.png');
+        this.load.image('instructions', 'assets/instructions_button2.png');
         //this.load.image('title', 'assets/title3.png');
         /* PLAYER SPRITE ASSESTS */
         this.load.atlas("title_atlas", "sprites/title/title_sheet.png", 
@@ -15,11 +17,11 @@ class splash extends Phaser.Scene {
 
 
 
-        let graphics = this.add.graphics();
+        // let graphics = this.add.graphics();
 
-        graphics.fillStyle(0x000080, 1);
+        // graphics.fillStyle(0x000080, 1);
 
-        graphics.fillRect(350, 400, 115, 40);
+        // graphics.fillRect(350, 400, 115, 40);
 
    
 
@@ -37,12 +39,16 @@ class splash extends Phaser.Scene {
         title_an.anims.play('title');
 
 
-        var text = this.add.text(360,410, 'Start game');
-        text.setInteractive({ useHandCursor: true });
-        text.on('pointerdown', () => this.clickButton());
+        var start = this.add.image(400,410, 'start');
+        start.setInteractive({ useHandCursor: true });
+        start.on('pointerdown', () => this.clickButton());
 
         var title = this.add.text(215, 235, 'A Race Against Winter', {font: '30px Courier', fill: '#ffffff'});
         //var subtitle = this.add.text(10, 130, '(no lost freshman were harmed and/or frozen in the creation of this game)', {font: '18px Courier', fill: '#ffffff'});
+
+        var text = this.add.image(400, 360, 'instructions');
+        text.setInteractive({ useHandCursor: true });
+        text.on('pointerdown', () => this.clickIn());
 
 
     }
@@ -54,5 +60,9 @@ class splash extends Phaser.Scene {
         this.scene.start('infoScene');
         this.scene.start('panelScene');
     }   
+
+    clickIn() {
+
+    }
 
 }
