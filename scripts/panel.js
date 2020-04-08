@@ -5,6 +5,7 @@ let gameOptions = {
 }
 let sound_button;
 let mute_button;
+let home_button;
 
 class panel extends Phaser.Scene {
     constructor() {
@@ -36,8 +37,8 @@ class panel extends Phaser.Scene {
         }
         music.play(music_config);
 
-        sound_button = this.add.image(723, 35, 'unmuted');
-        sound_button.setDisplaySize(40, 40);
+        sound_button = this.add.sprite(723, 35, 'soundon');
+        //sound_button.setDisplaySize(40, 40);
         sound_button.setInteractive({ useHandCursor: true });
         sound_button.on('pointerdown', () => this.mute_unmute());
         // sound_button.inputEnabled = true;
@@ -48,7 +49,7 @@ class panel extends Phaser.Scene {
         let timeLeft = gameOptions.initialTime;
 
         // the energy container. A simple sprite
-        let heatContainer = this.add.sprite(130, 40, "heatcontainer").setScrollFactor(0);
+        let heatContainer = this.add.sprite(130, 35, "heatcontainer").setScrollFactor(0);
 
         // the energy bar. Another simple sprite
         let heatBar = this.add.sprite(heatContainer.x + 11, heatContainer.y, "heatbar").setScrollFactor(0);
@@ -93,18 +94,20 @@ class panel extends Phaser.Scene {
       graphics.strokeRoundedRect(1, 1, 798, 70, 0);
 
       this.add
-      .text(250, 25, "Time Left:", {
+      .text(250, 27, "Time Left:", {
         font: "18px monospace",
         fill: "#000000",
       })
 
       this.add
-      .text(450, 25, "Location:", {
+      .text(450, 27, "Location:", {
         font: "18px monospace",
         fill: "#000000",
       })
 
-      this.add.sprite(670, 35, "home");
+      home_button = this.add.sprite(670, 35, "home");
+      home_button.setInteractive({ useHandCursor: true });
+      home_button.on('pointerdown', () => this.home());
       //this.add.sprite(723, 35, "soundon");
       this.add.sprite(770, 35, "question");
     
@@ -173,6 +176,11 @@ class panel extends Phaser.Scene {
             mute_button.setInteractive({ useHandCursor: true });
             mute_button.on('pointerdown', () => this.mute_unmute());
         }
+    }
+
+    home() {
+      this.scene.stop('gameScene');
+      this.scene.switch('titleScene');
     }
 
 
