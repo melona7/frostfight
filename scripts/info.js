@@ -42,7 +42,7 @@ class info extends Phaser.Scene {
         //this.scene.add(handle, demo, true);
     }
     update() {
-        if (cursors.space.isDown || cursors.left.isDown || cursors.up.isDown || cursors.down.isDown) {
+        if (cursors.right.isDown || cursors.left.isDown || cursors.up.isDown || cursors.down.isDown) {
             this.scene.resume('gameScene');
             this.scene.resume('panelScene');
             this.scene.moveDown('infoScene');
