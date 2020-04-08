@@ -118,7 +118,7 @@ class main extends Phaser.Scene {
             star = this.physics.add
             .sprite(object.x, object.y, "star_atlas", "star_0.png").play("star", true);
             star.name = object.name;
-            console.log(star);
+            console.log(star.name);
             stars.add(star);
         });
 
@@ -127,7 +127,7 @@ class main extends Phaser.Scene {
 
         console.log("STAR 2", stars.children.entries[0].name);
 
-        
+        // get random building
 
     }
 
@@ -150,10 +150,13 @@ class main extends Phaser.Scene {
         if (star.name == loc) {
           //console.log("hi there huns");
         }
-        if (star.name == "dana") {
-          popup_text = "dana's text";
-          console.log("is it dana");
-        }
+        popup_text = "You made it to " + BUILDINGS[star.name]["display_name"] + "! ";
+        loc = star.name;
+        popup_text += BUILDINGS[star.name]["message"];
+        // if (star.name == "dana") {
+        //   popup_text = "dana's text";
+        //   console.log("is it dana");
+        // }
         //console.log(star.name);
         //console.log(star.x, star.y); 
         xcoord = star.x;
