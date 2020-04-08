@@ -6,6 +6,7 @@ let stars;
 let loc = "dana";
 let xcoord;
 let ycoord;
+let popup_text = "ok";
 
 class main extends Phaser.Scene {
     constructor() {
@@ -143,9 +144,13 @@ class main extends Phaser.Scene {
     build(player, star) {
         //this.show_message(star);
         if (star.name == loc) {
-          console.log("hi there huns");
+          //console.log("hi there huns");
         }
-        console.log(star.name);
+        if (star.name == "dana") {
+          popup_text = "dana's text";
+          console.log("is it dana");
+        }
+        //console.log(star.name);
         //console.log(star.x, star.y); 
         xcoord = star.x;
         ycoord = star.y;
