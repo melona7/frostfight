@@ -1,6 +1,8 @@
 let gameOptions = {
   initialTime: 60
 }
+let sound_button;
+let mute_button;
 
 class panel extends Phaser.Scene {
     constructor() {
@@ -9,54 +11,104 @@ class panel extends Phaser.Scene {
     preload() {
       this.load.image("heatcontainer", "assets/heat_container.png");
       this.load.image("heatbar", "assets/heat_bar_final.png");
+
+      /* AUDIO ASSETS */
+        this.load.audio('background_music', "audio/FightSong.mp3");
+        this.load.image('unmuted', "assets/unmuted.png");
+        this.load.image('muted', "assets/muted.png");
     }
     create() {
         
-    //var text = this.add.text(50,50, 'scene2!');
-    let timeLeft = gameOptions.initialTime;
+        // start music
+        var music = this.sound.add('background_music');
+        let music_config = 
+        {
+            mute: false,
+            volume: 1,
+            loop: true,
+            delay: 0
+        }
+        music.play(music_config);
 
-    // the energy container. A simple sprite
-    let heatContainer = this.add.sprite(130, 40, "heatcontainer").setScrollFactor(0);
+        sound_button = this.add.image(400, 40, 'unmuted');
+        sound_button.setDisplaySize(70, 70);
+        sound_button.setInteractive({ useHandCursor: true });
+        sound_button.on('pointerdown', () => this.mute_unmute());
+        // sound_button.inputEnabled = true;
+        // sound_button.events.onInputDown.add(mute_unmute, this);
+        
+        
+        //var text = this.add.text(50,50, 'scene2!');
+        let timeLeft = gameOptions.initialTime;
 
-    // the energy bar. Another simple sprite
-    let heatBar = this.add.sprite(heatContainer.x + 11, heatContainer.y, "heatbar").setScrollFactor(0);
+        // the energy container. A simple sprite
+        let heatContainer = this.add.sprite(130, 40, "heatcontainer").setScrollFactor(0);
 
-    // a copy of the energy bar to be used as a mask. Another simple sprite but...
-    let heatMask = this.add.sprite(heatBar.x, heatBar.y, "heatbar").setScrollFactor(0);
+        // the energy bar. Another simple sprite
+        let heatBar = this.add.sprite(heatContainer.x + 11, heatContainer.y, "heatbar").setScrollFactor(0);
 
-    // ...it's not visible...
-    heatMask.visible = false;
+        // a copy of the energy bar to be used as a mask. Another simple sprite but...
+        let heatMask = this.add.sprite(heatBar.x, heatBar.y, "heatbar").setScrollFactor(0);
 
-    // and we assign it as energyBar's mask.
-    heatBar.mask = new Phaser.Display.Masks.BitmapMask(this, heatMask);
+        // ...it's not visible...
+        heatMask.visible = false;
 
-    // a boring timer.
-    let gameTimer = this.time.addEvent({
-        delay: 1000,
-        callback: function(){
-            //console.log("lmao");
-            timeLeft --;
+        // and we assign it as energyBar's mask.
+        heatBar.mask = new Phaser.Display.Masks.BitmapMask(this, heatMask);
 
-            // dividing enery bar width by the number of seconds gives us the amount
-            // of pixels we need to move the energy bar each second
-            let stepWidth = heatMask.displayWidth / gameOptions.initialTime;
+        // a boring timer.
+        let gameTimer = this.time.addEvent({
+            delay: 1000,
+            callback: function(){
+                //console.log("lmao");
+                timeLeft --;
 
-            // moving the mask
-            
-            heatMask.x -= stepWidth;
-            //console.log(energyMask.x);
-            if(timeLeft == 0){
-               //stop somehow lol
-            }
-        },
-        callbackScope: this,
-        loop: true
-    });
+                // dividing enery bar width by the number of seconds gives us the amount
+                // of pixels we need to move the energy bar each second
+                let stepWidth = heatMask.displayWidth / gameOptions.initialTime;
+
+                // moving the mask
+                
+                heatMask.x -= stepWidth;
+                //console.log(energyMask.x);
+                if(timeLeft == 0){
+                //stop somehow lol
+                }
+            },
+            callbackScope: this,
+            loop: true
+        });
+
+        
+
+
       
     }
+
+    
     update() {
 
     }
-    
+
+    mute_unmute() {
+        //sound_button.destroy();
+        // unmute
+        if (this.game.sound.mute) {
+            console.log("Sound muted");
+            this.game.sound.mute = false;
+            mute_button.destroy();
+        }
+        // mute
+        else {
+            console.log("sound on");
+            this.game.sound.mute = true;
+            mute_button = this.add.image(400, 40, 'muted');
+            mute_button.setDisplaySize(50, 50);
+            mute_button.setInteractive({ useHandCursor: true });
+            mute_button.on('pointerdown', () => this.mute_unmute());
+        }
+    }
+
 
 }
+

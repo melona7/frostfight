@@ -25,8 +25,9 @@ class main extends Phaser.Scene {
         this.load.atlas("star_atlas", "sprites/star/star_sheet.png", 
         "sprites/star/star_sheet.json");
 
-        /* AUDIO ASSETS */
-        this.load.audio('background_music', "audio/FightSong.mp3");
+
+        /* MESSAGE BOX ASSETS*/
+        this.load.image("textbox", "assets/textbox.png");
     }
 
     create() {
@@ -109,19 +110,38 @@ class main extends Phaser.Scene {
             star = this.physics.add
             .sprite(object.x, object.y, "star_atlas", "star_0.png").play("star", true);
             star.name = object.name;
+            console.log(star);
             stars.add(star);
         });
 
         // set overlap with player and stars
         this.physics.add.overlap(player, stars, this.build, null, this);
 
+        console.log("STAR 2", stars.children.entries[0].name);
+
+        
+
     }
+
+    show_message(hit_star) {
+        let message_box = this.add.group();
+        let text_box = this.add.sprite(hit_star.x, hit_star.y, "textbox");
+        text_box.setDisplaySize(150, 100);
+        let message = "Hello World";
+
+        message_box.add(text_box);
+        message_box.add(message);
+
+
+    }
+
 
     /* Call back to this function whenever there's overlap with player and stars */
     build(player, star) {
-
+        //this.show_message(star);
         console.log(star.name);
         console.log(star.x, star.y); 
+
     }
 
     update() {
