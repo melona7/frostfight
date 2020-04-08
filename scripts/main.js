@@ -150,7 +150,7 @@ class main extends Phaser.Scene {
         xcoord = star.x;
         ycoord = star.y;
 
-        //this.scene.moveUp('infoScene');
+        this.scene.moveUp('infoScene');
 
     }
 
