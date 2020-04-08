@@ -6,6 +6,8 @@ let gameOptions = {
 let sound_button;
 let mute_button;
 let home_button;
+let timeLeft;
+let time_text;
 
 class panel extends Phaser.Scene {
     constructor() {
@@ -112,7 +114,7 @@ class panel extends Phaser.Scene {
       this.add.sprite(770, 35, "question");
     
       //var text = this.add.text(50,50, 'scene2!');
-      let timeLeft = gameOptions.initialTime;
+      timeLeft = gameOptions.initialTime;
 
       // the energy container. A simple sprite
       let heatContainer = this.add.sprite(130, 35, "heatcontainer").setScrollFactor(0);
@@ -128,6 +130,12 @@ class panel extends Phaser.Scene {
 
       // and we assign it as energyBar's mask.
       heatBar.mask = new Phaser.Display.Masks.BitmapMask(this, heatMask);
+
+      time_text = this.add
+      .text(350, 27, "60", {
+        font: "18px monospace",
+        fill: "#000000",
+      })
 
       // a boring timer.
       let gameTimer = this.time.addEvent({
@@ -156,6 +164,10 @@ class panel extends Phaser.Scene {
 
     
     update() {
+
+      time_text.setText(timeLeft);
+      
+
 
     }
 
