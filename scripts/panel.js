@@ -192,6 +192,7 @@ class panel extends Phaser.Scene {
 
     home() {
       this.scene.stop('gameScene');
+      this.scene.stop('panelScene');
       this.scene.switch('titleScene');
     }
 
