@@ -54,8 +54,10 @@ class main extends Phaser.Scene {
         collision = this.physics.add.collider(player, worldLayer);
 
         // have the camera follow the player
+        //const camera = this.cameras.add(0, 0, 800, 500);
         const camera = this.cameras.main;
         camera.startFollow(player);
+        camera.setViewport(0, 70, 800, 430);
         camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
         // activate arrow keys for player movement
