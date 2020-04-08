@@ -3,10 +3,11 @@ let collision;
 let cursors;
 let star;
 let stars;
-let loc = "dana";
+let loc = "";
 let xcoord;
 let ycoord;
 let popup_text = "ok";
+let all_buildings = ['dana', 'hatcher', 'ugli', 'west quad', 'north quad', 'randall', 'seb'];
 
 class main extends Phaser.Scene {
     constructor() {
@@ -35,6 +36,9 @@ class main extends Phaser.Scene {
     }
 
     create() {
+
+      var value = Phaser.Math.Between(-1, all_buildings.length);
+      loc = all_buildings[value];
         // add base tilemap layer (campus map)
         var map = this.make.tilemap({ key: 'map' });
         const tileset = map.addTilesetImage("campus_set", "tiles");
