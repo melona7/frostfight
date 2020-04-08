@@ -46,23 +46,23 @@ const BUILDINGS = {"dana": {
                        "display_name": "the Chemistry Building",
                     },
                    "umma": {
-                       "message": "Need a break from walking outside? Walk around the UMMA instead, and check out the art exhibitions -- it's totally free!! (/donation-based). You can even stop in to study at the UMMA cafe while you’re here.",
-                       "display_name": "the University of Michigan Museum of Art (UMMA)",
+                       "message": "Need a break from walking outside? Walk around the UMMA instead, and check out the art exhibitions -- it's totally free!! (/donation-based). You can even stop in to study at the UMMA cafe while you're here.",
+                       "display_name": "the University of Michigan Museum of Art",
                     },
                    "ugli": {
                        "message": "The Ugli is open 24 hours a day, so you can always pop in to get warm and/or pull all-nighters, depending on how unfortunate you are.",
-                       "display_name": "the Shapiro Undergraduate Library (Ugli)",
+                       "display_name": "the Shapiro Undergraduate Library",
                     },
                     "west hall": {
                         "message": "Ever seen a wave pool? Come to the Marine Hydrodynamics Laboratory (MHL) in this building to check one out.",
                         "display_name": "West Hall",
                     },
                     "league": {
-                         "message": "Pick up some hot soup or coffee from Maizie's Cafe to help you warm up! If you’re looking to get away from your roomies, this building also houses a well-hidden hotel on its top floor.",
+                         "message": "Pick up some hot soup or coffee from Maizie's Cafe to help you warm up! If you're looking to get away from your roomies, this building also houses a well-hidden hotel on its top floor.",
                          "display_name": "the League",
                     },
                     "union": {
-                        "message": "You can cozy up by the beautiful fireplace in the lobby of this newly renovated building if it’s snowing outside. If you haven't already, head to the basement of this building to enjoy a gourmet meal from Panda Express, Subway or Taco Bell (your choice!).",
+                        "message": "You can cozy up by the beautiful fireplace in the lobby of this newly renovated building if it's snowing outside. If you haven't already, head to the basement of this building to enjoy a gourmet meal from Panda Express, Subway or Taco Bell (your choice!).",
                         "display_name": "the Union",
                     },
                     "east hall": {
