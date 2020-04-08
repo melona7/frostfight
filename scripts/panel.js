@@ -30,6 +30,7 @@ class panel extends Phaser.Scene {
     }
     create() {
         
+
         // start music
         music = this.sound.add('background_music');
         let music_config = 

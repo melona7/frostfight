@@ -1,8 +1,7 @@
 class info extends Phaser.Scene {
 	constructor() {
         super({
-        	key: 'infoScene'
-        });
+        	key: 'infoScene'});
         this.width = 300;
         this.height = 300;
     }
@@ -11,7 +10,7 @@ class info extends Phaser.Scene {
     }
     create() {
 
-    	this.cameras.main.setViewport(xcoord, ycoord, 300, 300);
+    	this.cameras.main.setViewport(250, 150, 300, 300);
         this.cameras.main.setBackgroundColor('#000000');
 
     	var handle = 'window' + this.count++;
