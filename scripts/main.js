@@ -110,10 +110,12 @@ class main extends Phaser.Scene {
             stars.add(star);
         });
 
+        // set overlap with player and stars
         this.physics.add.overlap(player, stars, this.build, null, this);
 
     }
 
+    /* Call back to this function whenever there's overlap with player and stars */
     build(player, star) {
 
         console.log(star.name);
