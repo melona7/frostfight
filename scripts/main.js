@@ -151,7 +151,7 @@ class main extends Phaser.Scene {
           //console.log("hi there huns");
         }
         popup_text = "You made it to " + BUILDINGS[star.name]["display_name"] + "! ";
-        loc = star.name;
+        //loc = star.name;
         popup_text += BUILDINGS[star.name]["message"];
         // if (star.name == "dana") {
         //   popup_text = "dana's text";
