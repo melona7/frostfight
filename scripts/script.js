@@ -30,6 +30,8 @@ function create() {
     // You can access the game's config to read the width & height
    this.add.image(400, 100, 'heatBar');
 
+   possible_destinations = ['Hatcher Library', 'Mason Hall'];
+
     
     var map = this.make.tilemap({ key: 'map' });
     const tileset = map.addTilesetImage("campus_set", "tiles");
@@ -177,7 +179,19 @@ worldLayer.renderDebug(debugGraphics, {
     star.name = object.name;
     stars.add(star);
 
-    
+
+    dest_idx = Math.round(Math.random());
+    final_destination = possible_destinations[dest_idx];
+
+    dest_text = this.add
+    .text(325, 35, "Destination: " + final_destination, {
+        font: "16px monospace",
+        fill: "#ffffff",
+        padding: { x: 5, y: 5 },
+        backgroundColor: "#000000"
+    })
+    .setScrollFactor(0);
+
 
         
 
@@ -228,7 +242,7 @@ worldLayer.renderDebug(debugGraphics, {
         callbackScope: this,
         loop: true
     });
- 
+      console.log("STARS", stars);
       this.physics.add.overlap(player, stars, build, null, this);
 
 }
