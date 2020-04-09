@@ -19,7 +19,7 @@ class panel extends Phaser.Scene {
       this.load.image("heatbar", "assets/heat_bar_final.png");
 
       /* AUDIO ASSETS */
-        this.load.audio('background_music', "audio/FightSong.mp3");
+        this.load.audio('background_music', "audio/FightSongCutFinal.mp3");
         this.load.image('unmuted', "assets/unmuted.png");
         this.load.image('muted', "assets/muted.png");
 
