@@ -13,12 +13,15 @@ class lose extends Phaser.Scene {
       text.setInteractive({ useHandCursor: true });
       text.on('pointerdown', () => this.clickButton());
 
+      this.cameras.main.setBackgroundColor("#000000");
+
     }
     update() {
 
     }
     clickButton() {
         this.scene.switch('gameScene');
+        this.scene.restart('gameScene');
         this.scene.start('infoScene');
         this.scene.start('panelScene');
     }   

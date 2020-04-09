@@ -1,7 +1,7 @@
 var graphics;
 
 let gameOptions = {
-  initialTime: 60
+  initialTime: 20
 }
 let sound_button;
 let mute_button;
@@ -125,11 +125,16 @@ class panel extends Phaser.Scene {
               if(timeLeft == 0){
                 //stop somehow lol
                 this.scene.switch('loseScene');
-                this.scene.stop('gameScene');
-                this.scene.stop('panelScene');
-                this.scene.stop('infoScene');
+                this.scene.moveUp('loseScene');
+                this.scene.moveDown('gameScene');
+                //this.scene.stop('panelScene');
+                //this.scene.stop('infoScene');
                 music.stop();
-                
+                cursors.right.enable = false;
+                cursors.left.enable = false;
+                cursors.up.enable = false;
+                cursors.down.enable = false;
+
               }
           },
           callbackScope: this,
@@ -142,8 +147,6 @@ class panel extends Phaser.Scene {
     update() {
 
       time_text.setText(timeLeft);
-      
-
 
     }
 
