@@ -77,6 +77,7 @@ class info extends Phaser.Scene {
             this.scene.resume('gameScene');
             this.scene.resume('panelScene');
             this.scene.moveDown('infoScene');
+            onStar = false;
             
         }
     }

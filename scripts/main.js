@@ -7,6 +7,7 @@ let loc = "";
 let xcoord;
 let ycoord;
 let popup_text = "ok";
+let onStar = false;
 let all_buildings = ['dana', 'hatcher', 'ugli', 'west quad', 'north quad', 'randall', 'seb'];
 
 class main extends Phaser.Scene {
@@ -152,9 +153,20 @@ class main extends Phaser.Scene {
             console.log("GAME COMPLETE");
           //console.log("hi there huns");
         }
+
+        if(!BUILDINGS[star.name]["wasVisited"]) {
+            if (BUILDINGS[star.name]["isWarm"] && timeLeft <= 55) {
+                timeLeft += 5;
+                heatMask.x += stepWidth * 5;
+                console.log(BUILDINGS[star.name]["wasVisited"]);
+            }
+            BUILDINGS[star.name]["wasVisited"] = true;
+        }
         popup_text = "You made it to " + BUILDINGS[star.name]["display_name"] + "! ";
         //loc = star.name;
         popup_text += BUILDINGS[star.name]["message"];
+
+
         // if (star.name == "dana") {
         //   popup_text = "dana's text";
         //   console.log("is it dana");
