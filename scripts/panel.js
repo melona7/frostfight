@@ -163,6 +163,12 @@ class panel extends Phaser.Scene {
               //console.log(energyMask.x);
               if(timeLeft == 0){
                 //stop somehow lol
+                this.scene.switch('loseScene');
+                this.scene.stop('gameScene');
+                this.scene.stop('panelScene');
+                this.scene.stop('infoScene');
+                music.stop();
+                
               }
           },
           callbackScope: this,
