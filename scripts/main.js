@@ -150,6 +150,18 @@ class main extends Phaser.Scene {
         //this.show_message(star);
         if (star.name == loc) {
             console.log("GAME COMPLETE");
+            this.scene.switch('winScene');
+            this.scene.bringToTop('winScene');
+
+            //this.scene.moveDown('gameScene');
+
+            /*//this.scene.stop('panelScene');
+            //this.scene.stop('infoScene');
+            music.stop();
+            cursors.right.enable = false;
+            cursors.left.enable = false;
+            cursors.up.enable = false;
+            cursors.down.enable = false;*/
           //console.log("hi there huns");
         }
 
@@ -175,7 +187,7 @@ class main extends Phaser.Scene {
         xcoord = star.x;
         ycoord = star.y;
 
-        this.scene.moveUp('infoScene');
+        this.scene.moveAbove('gameScene', 'infoScene');
         this.scene.pause('panelScene');
 
     }
@@ -230,3 +242,4 @@ class main extends Phaser.Scene {
     }
     
 }
+

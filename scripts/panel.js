@@ -36,8 +36,7 @@ class panel extends Phaser.Scene {
         music = this.sound.add('background_music');
         let music_config = 
         {
-        	//FIXME: change back for final game
-            mute: true,
+            mute: false,
             volume: 1,
             loop: true,
             delay: 0
@@ -125,8 +124,8 @@ class panel extends Phaser.Scene {
               if(timeLeft == 0){
                 //stop somehow lol
                 this.scene.switch('loseScene');
-                this.scene.moveUp('loseScene');
-                this.scene.moveDown('gameScene');
+                this.scene.bringToTop('loseScene');
+                //this.scene.moveDown('gameScene');
                 //this.scene.stop('panelScene');
                 //this.scene.stop('infoScene');
                 music.stop();
@@ -178,8 +177,11 @@ class panel extends Phaser.Scene {
       this.scene.stop('panelScene');
       music.stop();
       this.scene.switch('titleScene');
+      this.scene.bringToTop('titleScene');
     }
 
 
 }
+
+
 

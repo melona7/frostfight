@@ -2,9 +2,9 @@
 let info_text;
 
 class info extends Phaser.Scene {
-	constructor() {
+    constructor() {
         super({
-        	key: 'infoScene'});
+            key: 'infoScene'});
         this.width = 300;
         this.height = 300;
     }
@@ -43,7 +43,7 @@ class info extends Phaser.Scene {
         wordWrap: {width: 300},
     })
 
-    	var handle = 'window' + this.count++;
+        var handle = 'window' + this.count++;
 
         console.log(xcoord, ycoord);
 
@@ -76,7 +76,7 @@ class info extends Phaser.Scene {
         if (cursors.right.isDown || cursors.left.isDown || cursors.up.isDown || cursors.down.isDown) {
             this.scene.resume('gameScene');
             this.scene.resume('panelScene');
-            this.scene.moveDown('infoScene');
+            this.scene.sendToBack('infoScene');
             
         }
     }
