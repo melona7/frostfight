@@ -3,6 +3,7 @@ let collision;
 let cursors;
 let star;
 let stars;
+let m;
 let loc = "";
 let xcoord;
 let ycoord;
@@ -29,6 +30,8 @@ class main extends Phaser.Scene {
         /* STAR SPRITE ASSESTS */
         this.load.atlas("star_atlas", "sprites/star/star_sheet.png", 
         "sprites/star/star_sheet.json");
+
+        this.load.image("blockm", "assets/block-m-maize.png");
 
 
         /* MESSAGE BOX ASSETS*/
@@ -68,7 +71,7 @@ class main extends Phaser.Scene {
         //const camera = this.cameras.add(0, 0, 800, 500);
         const camera = this.cameras.main;
         camera.startFollow(player);
-        camera.setViewport(0, 70, 800, 500);
+        camera.setViewport(0, 71, 800, 500);
         camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
         // activate arrow keys for player movement
@@ -124,8 +127,13 @@ class main extends Phaser.Scene {
             stars.add(star);
         });
 
+        let mcoords = map.findObject("brassm", obj => obj.name === "block m");
+        m = this.physics.add
+        .image(mcoords.x, mcoords.y, "blockm");
+
         // set overlap with player and stars
         this.physics.add.overlap(player, stars, this.build, null, this);
+        this.physics.add.overlap(player, m, this.tragedy, null, this);
 
         console.log("STAR 2", stars.children.entries[0].name);
 
@@ -145,6 +153,13 @@ class main extends Phaser.Scene {
 
     }
 
+    tragedy(player, blockm) {
+      this.scene.switch('loseScene');
+            this.scene.bringToTop('loseScene');
+            music.stop();
+            //have to stop info scene from popping up while we move after winning
+            this.scene.stop('infoScene');
+    }
 
     /* Call back to this function whenever there's overlap with player and stars */
     build(player, star) {
