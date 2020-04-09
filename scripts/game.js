@@ -27,7 +27,7 @@ const game = new Phaser.Game(config);
 
 const BUILDINGS = {"dana": {
                        "message": "For added warmth, hit up the top floor of this building and enjoy the benefits of its 4,000-square-foot skylight.",
-                       "display_name": "the Dana Building",
+                       "display_name": "Dana Building",
                        "isWarm": false,
                        "wasVisited": false,
                     },
@@ -51,19 +51,19 @@ const BUILDINGS = {"dana": {
                    },
                    "chem": {
                        "message": "The Chem Building has a ceiling full of skylights, so you can enjoy a sunny day even if it's cold outside!",
-                       "display_name": "the Chemistry Building",
+                       "display_name": "Chemistry Building",
                        "isWarm": false,
                        "wasVisited": false,
                     },
                    "umma": {
                        "message": "Need a break from walking outside? Check out the art exhibitions inside -- it's totally free!! If you'd rather sit, try a hot drink from the UMMA Cafe.",
-                       "display_name": "the University of Michigan Museum of Art",
+                       "display_name": "University of Michigan Museum of Art",
                        "isWarm": false,
                        "wasVisited": false,
                     },
                    "ugli": {
                        "message": "The Ugli is open 24 hours a day, so you can always pop in to get warm and/or pull all-nighters, depending on how unfortunate you are.",
-                       "display_name": "the Shapiro Undergraduate Library",
+                       "display_name": "Shapiro Undergraduate Library",
                        "isWarm": true,
                        "wasVisited": false,
                     },
@@ -75,13 +75,13 @@ const BUILDINGS = {"dana": {
                     },
                     "league": {
                          "message": "Pick up some hot soup or coffee from Maizie's Cafe to help you warm up! If you're looking to get away from your roomies, this building also houses a well-hidden hotel on its top floor.",
-                         "display_name": "the League",
+                         "display_name": "League",
                          "isWarm": true,
                          "wasVisited": false,
                     },
                     "union": {
                         "message": "Cozy up by the beautiful fireplace in the lobby with a gourmet meal from Panda Express, Subway or Taco Bell (your choice!).",
-                        "display_name": "the Union",
+                        "display_name": "Union",
                         "isWarm": true,
                         "wasVisited": false,
                     },
@@ -123,19 +123,19 @@ const BUILDINGS = {"dana": {
                     },
                     "law": {
                         "message": "This magical building is a great place to get motivated and study hard. Check out the Law Atrium to get some sunlight while you're studying to really stay warm.",
-                        "display_name": "the Law Library",
+                        "display_name": "Law Library",
                         "isWarm": false,
                         "wasVisited": false,
                     },
                     "ross": {
                         "message": "While this building is well-known for its 'Winter Garden,' don't let this name deter you from meeting with friends or study groups in this building!",
-                        "display_name": "the Ross School of Business",
+                        "display_name": "Ross School of Business",
                         "isWarm": true,
                         "wasVisited": false,
                     },
                     "seb": {
                         "message": "Looking for a new study spot? Check out the Brandon Center in this building for a new place to grind.",
-                        "display_name": "the School of Education Building",
+                        "display_name": "School of Education Building",
                         "isWarm": false,
                         "wasVisited": false,
                     },
@@ -147,13 +147,13 @@ const BUILDINGS = {"dana": {
                     },
                     "mlb": {
                         "message": "Stop in for a class, get lost for a lifetime! It's very easy to get disoriented in the circular hallways of the MLB (but at least you'll be warm!).",
-                        "display_name": "the Modern Languages Building",
+                        "display_name": "Modern Languages Building",
                         "isWarm": false,
                         "wasVisited": false,
                     },
                     "lsa": {
                         "message": "Another newly renovated spot on campus, this building now has a beautiful window wall and it's a great place to grab a table for a study group.",
-                        "display_name": "the LSA Building",
+                        "display_name": "LSA Building",
                         "isWarm": false,
                         "wasVisited": false,
                     },

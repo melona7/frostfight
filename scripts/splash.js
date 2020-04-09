@@ -10,6 +10,7 @@ class splash extends Phaser.Scene {
         /* PLAYER SPRITE ASSESTS */
         this.load.atlas("title_atlas", "sprites/title/title_sheet.png", 
         "sprites/title/title_sheet.json");
+
     }
     create() {
         var bg = this.add.sprite(0,0,'background');
@@ -38,17 +39,23 @@ class splash extends Phaser.Scene {
 
         title_an.anims.play('title');
 
-
-        var start = this.add.image(400,410, 'start');
-        start.setInteractive({ useHandCursor: true });
-        start.on('pointerdown', () => this.clickButton());
-
         var title = this.add.text(215, 235, 'A Race Against Winter', {font: '30px Courier', fill: '#ffffff'});
         //var subtitle = this.add.text(10, 130, '(no lost freshman were harmed and/or frozen in the creation of this game)', {font: '18px Courier', fill: '#ffffff'});
 
-        var text = this.add.image(400, 360, 'instructions');
-        text.setInteractive({ useHandCursor: true });
-        text.on('pointerdown', () => this.clickIn());
+        this.time.addEvent({
+            delay: 6000,
+            callback: function() {
+                var text = this.add.image(400, 360, 'instructions');
+                text.setInteractive({ useHandCursor: true });
+                text.on('pointerdown', () => this.clickIn());
+
+                var start = this.add.image(400,410, 'start');
+                start.setInteractive({ useHandCursor: true });
+                start.on('pointerdown', () => this.clickButton());
+            }, callbackScope: this,
+            loop: true
+
+        });
 
 
     }

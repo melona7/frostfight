@@ -1,7 +1,7 @@
 var graphics;
 
 let gameOptions = {
-  initialTime: 20
+  initialTime: 45
 }
 let sound_button;
 let mute_button;
@@ -11,6 +11,7 @@ let time_text;
 let music;
 let heatMask;
 let stepWidth;
+let destination;
 
 class panel extends Phaser.Scene {
     constructor() {
@@ -66,16 +67,15 @@ class panel extends Phaser.Scene {
       })
 
       this.add
-      .text(450, 27, "Location:", {
+      .text(400, 18, "Location:", {
         font: "18px monospace",
         fill: "#000000",
       })
-
-      this.add
-      .text(552, 27, loc, {
-        font: "18px monospace",
-        fill: "#000000",
-      })
+      destination = this.add
+                    .text(400, 32, "", {
+                        font: "18px monospace",
+                        fill: "#000000",
+                      })
 
       home_button = this.add.sprite(670, 35, "home");
       home_button.setInteractive({ useHandCursor: true });
@@ -147,6 +147,10 @@ class panel extends Phaser.Scene {
     update() {
 
       time_text.setText(timeLeft);
+
+      if(loc) {
+        destination.setText(BUILDINGS[loc]["display_name"]);
+      }
 
     }
 

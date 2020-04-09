@@ -7,7 +7,6 @@ let loc = "";
 let xcoord;
 let ycoord;
 let popup_text = "ok";
-let onStar = false;
 let all_buildings = ['dana', 'hatcher', 'ugli', 'west quad', 'north quad', 'randall', 'seb'];
 
 class main extends Phaser.Scene {
@@ -38,7 +37,7 @@ class main extends Phaser.Scene {
 
     create() {
 
-      var value = Phaser.Math.Between(-1, all_buildings.length);
+      var value = Phaser.Math.Between(0, all_buildings.length - 1);
       loc = all_buildings[value];
       console.log("random loc", loc);
         // add base tilemap layer (campus map)

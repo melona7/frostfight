@@ -20,8 +20,10 @@ class lose extends Phaser.Scene {
 
     }
     clickButton() {
+        this.scene.stop('gameScene');
+        this.scene.stop('panelScene');
         this.scene.switch('gameScene');
-        this.scene.restart('gameScene');
+        this.scene.start('gameScene');
         this.scene.start('infoScene');
         this.scene.start('panelScene');
     }   
