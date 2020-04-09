@@ -1,1 +1,0 @@
-export const BUILDINGS = {"dana": {"message": "save the earth"}};
