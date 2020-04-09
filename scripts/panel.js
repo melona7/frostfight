@@ -44,6 +44,13 @@ class panel extends Phaser.Scene {
         music.play(music_config);
 
         sound_button = this.add.sprite(723, 35, 'soundon');
+        // start with sound muted if carried over from previous game
+        if (this.game.sound.mute) {
+            mute_button = this.add.image(723, 35, 'muted');
+            mute_button.setDisplaySize(40, 40);
+            mute_button.setInteractive({ useHandCursor: true });
+            mute_button.on('pointerdown', () => this.mute_unmute());
+        }
         //sound_button.setDisplaySize(40, 40);
         sound_button.setInteractive({ useHandCursor: true });
         sound_button.on('pointerdown', () => this.mute_unmute());

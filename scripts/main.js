@@ -153,6 +153,7 @@ class main extends Phaser.Scene {
             console.log("GAME COMPLETE");
             this.scene.switch('winScene');
             this.scene.bringToTop('winScene');
+            music.stop();
 
             //this.scene.moveDown('gameScene');
 
