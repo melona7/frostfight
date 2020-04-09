@@ -175,7 +175,7 @@ class main extends Phaser.Scene {
         }
 
         if(!BUILDINGS[star.name]["wasVisited"]) {
-            if (BUILDINGS[star.name]["isWarm"] && timeLeft <= 55) {
+            if (BUILDINGS[star.name]["isWarm"] && timeLeft <= 40) {
                 timeLeft += 5;
                 heatMask.x += stepWidth * 5;
                 console.log(BUILDINGS[star.name]["wasVisited"]);
