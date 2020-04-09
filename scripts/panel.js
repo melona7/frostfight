@@ -135,7 +135,7 @@ class panel extends Phaser.Scene {
                 this.scene.bringToTop('loseScene');
                 //this.scene.moveDown('gameScene');
                 //this.scene.stop('panelScene');
-                //this.scene.stop('infoScene');
+                this.scene.stop('infoScene');
                 music.stop();
                 cursors.right.enable = false;
                 cursors.left.enable = false;
