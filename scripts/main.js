@@ -153,17 +153,9 @@ class main extends Phaser.Scene {
             console.log("GAME COMPLETE");
             this.scene.switch('winScene');
             this.scene.bringToTop('winScene');
+            //have to stop info scene from popping up while we move after winning
+            this.scene.stop('infoScene');
 
-            //this.scene.moveDown('gameScene');
-
-            /*//this.scene.stop('panelScene');
-            //this.scene.stop('infoScene');
-            music.stop();
-            cursors.right.enable = false;
-            cursors.left.enable = false;
-            cursors.up.enable = false;
-            cursors.down.enable = false;*/
-          //console.log("hi there huns");
         }
 
         if(!BUILDINGS[star.name]["wasVisited"]) {
