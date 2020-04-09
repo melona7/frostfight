@@ -36,7 +36,7 @@ class info extends Phaser.Scene {
         console.log("LOC 2", loc);
 
         info_text = this.add
-        .text(250, 250, popup_text, {
+        .text(250, 210, popup_text, {
         font: "18px monospace",
         fill: "#000000",
         align: 'center',

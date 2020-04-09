@@ -89,7 +89,8 @@ class panel extends Phaser.Scene {
         //     callbackScope: this,
         //     loop: true
         // });
-
+        console.log("panel loc", loc);
+      
       graphics = this.add.graphics();
 
       graphics.lineStyle(2, 0x000000, 2);

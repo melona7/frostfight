@@ -39,6 +39,7 @@ class main extends Phaser.Scene {
 
       var value = Phaser.Math.Between(-1, all_buildings.length);
       loc = all_buildings[value];
+      console.log("random loc", loc);
         // add base tilemap layer (campus map)
         var map = this.make.tilemap({ key: 'map' });
         const tileset = map.addTilesetImage("campus_set", "tiles");
@@ -148,6 +149,7 @@ class main extends Phaser.Scene {
     build(player, star) {
         //this.show_message(star);
         if (star.name == loc) {
+            console.log("GAME COMPLETE");
           //console.log("hi there huns");
         }
         popup_text = "You made it to " + BUILDINGS[star.name]["display_name"] + "! ";

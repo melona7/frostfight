@@ -46,7 +46,7 @@ const BUILDINGS = {"dana": {
                        "display_name": "the Chemistry Building",
                     },
                    "umma": {
-                       "message": "Need a break from walking outside? Walk around the UMMA instead, and check out the art exhibitions -- it's totally free!! (/donation-based). You can even stop in to study at the UMMA cafe while you're here.",
+                       "message": "Need a break from walking outside? Check out the art exhibitions inside -- it's totally free!! If you'd rather sit, try a hot drink from the UMMA Cafe.",
                        "display_name": "the University of Michigan Museum of Art",
                     },
                    "ugli": {
@@ -62,7 +62,7 @@ const BUILDINGS = {"dana": {
                          "display_name": "the League",
                     },
                     "union": {
-                        "message": "You can cozy up by the beautiful fireplace in the lobby of this newly renovated building if it's snowing outside. If you haven't already, head to the basement of this building to enjoy a gourmet meal from Panda Express, Subway or Taco Bell (your choice!).",
+                        "message": "Cozy up by the beautiful fireplace in the lobby with a gourmet meal from Panda Express, Subway or Taco Bell (your choice!).",
                         "display_name": "the Union",
                     },
                     "east hall": {
@@ -78,7 +78,7 @@ const BUILDINGS = {"dana": {
                         "display_name": "South Quad",
                     },
                     "east quad": {
-                        "message": "There's always plenty to do at East Quad: grab a meal from the dining hall, catch a show at the Keene Theater, listen to an impromptu piano concert in the lobby, or reminisce with friends from Orientation.",
+                        "message": "There's always plenty to do at East Quad: grab a meal from the dining hall, catch a show at the Keene Theater, or reminisce with friends from Orientation.",
                         "display_name": "East Quad",
                     },
                     "west quad": {
@@ -90,11 +90,11 @@ const BUILDINGS = {"dana": {
                         "display_name": "North Quad",
                     },
                     "law": {
-                        "message": "Scouted as a potential film location for the Harry Potter movies, this magical building is a great place to get motivated and study hard. Check out the Law Atrium to get some sunlight while you're studying to really stay warm.",
+                        "message": "This magical building is a great place to get motivated and study hard. Check out the Law Atrium to get some sunlight while you're studying to really stay warm.",
                         "display_name": "the Law Library",
                     },
                     "ross": {
-                        "message": "While this building is well-known for its 'Winter Garden,' don't let this name deter you from meeting with friends or study groups in this building! There's always plenty of people inside, and it's a great place to warm up.",
+                        "message": "While this building is well-known for its 'Winter Garden,' don't let this name deter you from meeting with friends or study groups in this building!",
                         "display_name": "the Ross School of Business",
                     },
                     "seb": {
