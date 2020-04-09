@@ -66,7 +66,7 @@ class panel extends Phaser.Scene {
       })
 
       this.add
-      .text(400, 18, "Location:", {
+      .text(400, 14, "Location:", {
         font: "18px monospace",
         fill: "#000000",
       })
@@ -74,6 +74,7 @@ class panel extends Phaser.Scene {
                     .text(400, 32, "", {
                         font: "18px monospace",
                         fill: "#000000",
+                        wordWrap: {width: 250}
                       })
 
       home_button = this.add.sprite(670, 35, "home");

@@ -7,8 +7,8 @@ let loc = "";
 let xcoord;
 let ycoord;
 let popup_text = "ok";
-let all_buildings = ['dana', 'hatcher', 'ugli', 'west quad', 'north quad', 'randall', 'seb'];
-
+//let all_buildings = ['dana', 'mason', 'hatcher', 'ugli', 'west quad', 'north quad', 'randall', 'seb',];
+//let all_buildings = "hey there";
 class main extends Phaser.Scene {
     constructor() {
         super('gameScene');
@@ -36,10 +36,11 @@ class main extends Phaser.Scene {
     }
 
     create() {
-
-      var value = Phaser.Math.Between(0, all_buildings.length - 1);
-      loc = all_buildings[value];
-      console.log("random loc", loc);
+        let all_buildings = Object.keys(BUILDINGS);
+        console.log("possible keys", all_buildings);
+        var value = Phaser.Math.Between(0, all_buildings.length - 1);
+        loc = all_buildings[value];
+        console.log("random loc", loc);
         // add base tilemap layer (campus map)
         var map = this.make.tilemap({ key: 'map' });
         const tileset = map.addTilesetImage("campus_set", "tiles");
