@@ -1,0 +1,11 @@
+#game-container {
+    margin: 0;
+    padding: 0;
+    /* border: 5px solid black;
+    width: 800px; */
+  }
+
+  #game-container>canvas {
+    border-radius: 10px;
+    /* border: 2px solid blue; */
+  }
