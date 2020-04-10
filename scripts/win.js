@@ -1,9 +1,11 @@
+//let win_music;
+
 class win extends Phaser.Scene {
     constructor() {
         super('winScene');
     }
     preload() {
-
+        //this.load.audio("win_music", "audio/clapGlee.mp3");
     }
     create() {
 
@@ -13,11 +15,24 @@ class win extends Phaser.Scene {
       text.on('pointerdown', () => this.clickButton());
 
       this.cameras.main.setBackgroundColor("#000000");
+
+      // start music
+      //win_music = this.sound.add('win_music');
+      let music_config = 
+      {
+          mute: this.game.sound.mute,
+          volume: 1,
+          loop: true,
+          delay: 0
+      }
+      win_music.play(music_config);
     }
     update() {
 
     }
     clickButton() {
+        win_music.stop();
+        console.log("MUSIC STOP");
         this.scene.stop('gameScene');
         this.scene.stop('panelScene');
   		  this.scene.bringToTop('gameScene');
@@ -25,5 +40,6 @@ class win extends Phaser.Scene {
         this.scene.start('gameScene');
         this.scene.start('infoScene');
         this.scene.start('panelScene');
+        
     }   
 }

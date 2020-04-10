@@ -9,6 +9,8 @@ let home_button;
 let timeLeft;
 let time_text;
 let music;
+let win_music;
+let lose_music;
 let heatMask;
 let stepWidth;
 let destination;
@@ -21,10 +23,17 @@ class panel extends Phaser.Scene {
       this.load.image("heatcontainer", "assets/heat_container.png");
       this.load.image("heatbar", "assets/heat_bar_final.png");
 
-      /* AUDIO ASSETS */
+      /* AUDIO ASSETS Note: all music added here in panel*/ 
         this.load.audio('background_music', "audio/FightSongCutFinal.mp3");
         this.load.image('unmuted', "assets/unmuted.png");
         this.load.image('muted', "assets/muted.png");
+        // original glee fight song
+        //this.load.audio('win_music', "audio/gleeeee.mp3");
+        // Glee fight song with clapping before too to celebrate the win?
+        //this.load.audio('win_music', "audio/clapGlee.mp3");
+        // Mr. Brightside (just in case)
+        this.load.audio('win_music', "audio/MrBrightside.mp3");
+        this.load.audio('lose_music', "audio/OhioStateCut.mp3");
 
         this.load.image("home", "assets/home.png");
         this.load.image("soundon", "assets/soundon.png");
@@ -34,6 +43,8 @@ class panel extends Phaser.Scene {
         
         // start music
         music = this.sound.add('background_music');
+        win_music = this.sound.add('win_music');
+        lose_music = this.sound.add('lose_music');
         let music_config = 
         {
             mute: false,
