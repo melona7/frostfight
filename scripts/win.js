@@ -6,7 +6,7 @@ class win extends Phaser.Scene {
     }
     preload() {
         //this.load.audio("win_music", "audio/clapGlee.mp3");
-        this.load.image("home_alt", "assets/home_white.png");
+        // this.load.image("home_alt", "assets/home_white.png");
     }
     create() {
 
@@ -48,7 +48,7 @@ class win extends Phaser.Scene {
         
     }  
     homewin() {
-        lose_music.stop();
+        win_music.stop();
         this.scene.stop('gameScene');
         this.scene.stop('panelScene');
         this.scene.sendToBack('winScene');

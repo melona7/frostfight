@@ -15,27 +15,24 @@ class main extends Phaser.Scene {
         super('gameScene');
     }
     preload() {
-        /* ENERGY SPRITE ASSETS */
-        this.load.image("energycontainer", "assets/heatco.png");
-        this.load.image("energybar", "assets/heatba.png");
 
-        /* TILES AND MAP ASSESTS */
-        this.load.image("tiles", "tiles/campus_set.png");
-        this.load.tilemapTiledJSON("map", "tiles/CampusMap.json");
+        // /* TILES AND MAP ASSESTS */
+        // this.load.image("tiles", "tiles/campus_set.png");
+        // this.load.tilemapTiledJSON("map", "tiles/CampusMap.json");
         
-        /* PLAYER SPRITE ASSESTS */
-        this.load.atlas("atlas", "sprites/freshman_sprite_sheet.png", 
-        "sprites/freshman_sprite_sheet.json");
+        // /* PLAYER SPRITE ASSESTS */
+        // this.load.atlas("atlas", "sprites/freshman_sprite_sheet.png", 
+        // "sprites/freshman_sprite_sheet.json");
 
-        /* STAR SPRITE ASSESTS */
-        this.load.atlas("star_atlas", "sprites/star/star_sheet.png", 
-        "sprites/star/star_sheet.json");
+        // /* STAR SPRITE ASSESTS */
+        // this.load.atlas("star_atlas", "sprites/star/star_sheet.png", 
+        // "sprites/star/star_sheet.json");
 
-        this.load.image("blockm", "assets/block-m-maize.png");
+        // this.load.image("blockm", "assets/block-m-maize.png");
 
 
-        /* MESSAGE BOX ASSETS*/
-        this.load.image("textbox", "assets/textbox.png");
+        // /* MESSAGE BOX ASSETS*/
+        // this.load.image("textbox", "assets/textbox.png");
     }
 
     create() {

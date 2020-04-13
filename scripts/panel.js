@@ -20,24 +20,24 @@ class panel extends Phaser.Scene {
         super('panelScene');
     }
     preload() {
-      this.load.image("heatcontainer", "assets/heat_container.png");
-      this.load.image("heatbar", "assets/heat_bar_final.png");
+      // this.load.image("heatcontainer", "assets/heat_container.png");
+      // this.load.image("heatbar", "assets/heat_bar_final.png");
 
-      /* AUDIO ASSETS Note: all music added here in panel*/ 
-        this.load.audio('background_music', "audio/FightSongCutFinal.mp3");
-        this.load.image('unmuted', "assets/unmuted.png");
-        this.load.image('muted', "assets/muted.png");
-        // original glee fight song
-        //this.load.audio('win_music', "audio/gleeeee.mp3");
-        // Glee fight song with clapping before too to celebrate the win?
-        //this.load.audio('win_music', "audio/clapGlee.mp3");
-        // Mr. Brightside (just in case)
-        this.load.audio('win_music', "audio/MrBrightside.mp3");
-        this.load.audio('lose_music', "audio/OhioStateCut.mp3");
+      // /* AUDIO ASSETS Note: all music added here in panel*/ 
+      //   this.load.audio('background_music', "audio/FightSongCutFinal.mp3");
+      //   this.load.image('unmuted', "assets/unmuted.png");
+      //   this.load.image('muted', "assets/muted.png");
+      //   // original glee fight song
+      //   //this.load.audio('win_music', "audio/gleeeee.mp3");
+      //   // Glee fight song with clapping before too to celebrate the win?
+      //   //this.load.audio('win_music', "audio/clapGlee.mp3");
+      //   // Mr. Brightside (just in case)
+      //   this.load.audio('win_music', "audio/MrBrightside.mp3");
+      //   this.load.audio('lose_music', "audio/OhioStateCut.mp3");
 
-        this.load.image("home", "assets/home.png");
-        this.load.image("soundon", "assets/soundon.png");
-        this.load.image("question", "assets/question.png");
+      //   this.load.image("home", "assets/home.png");
+      //   this.load.image("soundon", "assets/soundon.png");
+      //   this.load.image("question", "assets/question.png");
     }
     create() {
         

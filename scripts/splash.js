@@ -11,6 +11,45 @@ class splash extends Phaser.Scene {
         this.load.atlas("title_atlas", "sprites/title/title_sheet.png", 
         "sprites/title/title_sheet.json");
 
+        this.load.image("heatcontainer", "assets/heat_container.png");
+      this.load.image("heatbar", "assets/heat_bar_final.png");
+
+      /* AUDIO ASSETS Note: all music added here in panel*/ 
+        this.load.audio('background_music', "audio/FightSongCutFinal.mp3");
+        this.load.image('unmuted', "assets/unmuted.png");
+        this.load.image('muted', "assets/muted.png");
+        // original glee fight song
+        //this.load.audio('win_music', "audio/gleeeee.mp3");
+        // Glee fight song with clapping before too to celebrate the win?
+        //this.load.audio('win_music', "audio/clapGlee.mp3");
+        // Mr. Brightside (just in case)
+        this.load.audio('win_music', "audio/MrBrightside.mp3");
+        this.load.audio('lose_music', "audio/OhioStateCut.mp3");
+
+        this.load.image("home", "assets/home.png");
+        this.load.image("soundon", "assets/soundon.png");
+        this.load.image("question", "assets/question.png");
+
+         /* TILES AND MAP ASSESTS */
+         this.load.image("tiles", "tiles/campus_set.png");
+         this.load.tilemapTiledJSON("map", "tiles/CampusMap.json");
+         
+         /* PLAYER SPRITE ASSESTS */
+         this.load.atlas("atlas", "sprites/freshman_sprite_sheet.png", 
+         "sprites/freshman_sprite_sheet.json");
+ 
+         /* STAR SPRITE ASSESTS */
+         this.load.atlas("star_atlas", "sprites/star/star_sheet.png", 
+         "sprites/star/star_sheet.json");
+ 
+         this.load.image("blockm", "assets/block-m-maize.png");
+ 
+ 
+         /* MESSAGE BOX ASSETS*/
+         this.load.image("textbox", "assets/textbox.png");
+
+         this.load.image("home_alt", "assets/home_white.png");
+
     }
     create() {
         var bg = this.add.sprite(0,0,'background');

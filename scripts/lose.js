@@ -5,7 +5,7 @@ class lose extends Phaser.Scene {
     }
     preload() {
       //this.load.audio("lose_music", "audio/OhioState.mp3");
-      this.load.image("home_alt", "assets/home_white.png");
+      // this.load.image("home_alt", "assets/home_white.png");
 
     }
     create() {
