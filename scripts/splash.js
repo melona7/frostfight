@@ -63,7 +63,9 @@ class splash extends Phaser.Scene {
 
     }
     clickButton() {
+        this.scene.start('gameScene');
         this.scene.switch('gameScene');
+        this.scene.bringToTop('gameScene');
         this.scene.start('infoScene');
         this.scene.start('panelScene');
     }   

@@ -6,6 +6,7 @@ class win extends Phaser.Scene {
     }
     preload() {
         //this.load.audio("win_music", "audio/clapGlee.mp3");
+        this.load.image("home_alt", "assets/home_white.png");
     }
     create() {
 
@@ -26,6 +27,10 @@ class win extends Phaser.Scene {
           delay: 0
       }
       win_music.play(music_config);
+
+      var home_link = this.add.image(400, 400, 'home_alt');
+      home_link.setInteractive({ useHandCursor: true });
+      home_link.on('pointerdown', () => this.homewin());
     }
     update() {
 
@@ -41,5 +46,13 @@ class win extends Phaser.Scene {
         this.scene.start('infoScene');
         this.scene.start('panelScene');
         
-    }   
+    }  
+    homewin() {
+        lose_music.stop();
+        this.scene.stop('gameScene');
+        this.scene.stop('panelScene');
+        this.scene.sendToBack('winScene');
+        this.scene.switch('titleScene');
+        this.scene.bringToTop('titleScene');
+      } 
 }
