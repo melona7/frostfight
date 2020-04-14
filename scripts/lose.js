@@ -49,6 +49,7 @@ class lose extends Phaser.Scene {
         this.scene.stop('panelScene');
         this.scene.start('gameScene')
         this.scene.start('panelScene');
+        RESET_VISITED_BUILDINGS();
     }
     
     homelose() {
