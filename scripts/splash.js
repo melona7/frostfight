@@ -49,8 +49,9 @@ class splash extends Phaser.Scene {
          this.load.image("textbox", "assets/textbox.png");
 
          this.load.image("home_alt", "assets/home_white.png");
+         this.load.image('start_alt', 'assets/start_alt.png');
 
-         this.load.image("graybox", "assets/grayBox.png");
+         //this.load.image("graybox", "assets/grayBox.png");
 
     }
     create() {

@@ -59,6 +59,7 @@ class lose extends Phaser.Scene {
       this.scene.sendToBack('loseScene');
       this.scene.switch('titleScene');
       this.scene.bringToTop('titleScene');
+      this.scene.start('titleScene');
     }
 
     transfer() {

@@ -55,5 +55,6 @@ class win extends Phaser.Scene {
         this.scene.sendToBack('winScene');
         this.scene.switch('titleScene');
         this.scene.bringToTop('titleScene');
+        this.scene.start('titleScene');
       } 
 }

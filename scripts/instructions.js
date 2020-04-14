@@ -24,7 +24,7 @@ class instructions extends Phaser.Scene {
         
         var next_text = this.add.text(700,470, 'next');
         var back_text = this.add.text(100,470, 'back');
-        var start_text = this.add.text(400,470, 'start');
+        var start = this.add.image(400,470, 'start_alt');
         console.log(all_instructions[index]);
 
         this.add.text(200, 100, "HOW TO PLAY", {font: "22px monospace"});
@@ -36,14 +36,17 @@ class instructions extends Phaser.Scene {
         back_text.setInteractive({ useHandCursor: true });
         back_text.on('pointerdown', () => this.back());
 
-        back_text.setInteractive({ useHandCursor: true });
-        back_text.on('pointerdown', () => this.go());
+        start.setInteractive({ useHandCursor: true });
+        start.on('pointerdown', () => this.go());
 
 
         
         instr.alpha = 1;
 
         var home_link = this.add.image(740, 60, 'home_alt');
+        home_link.setInteractive({ useHandCursor: true });
+        home_link.on('pointerdown', () => this.home());
+  
 
 
 
@@ -83,6 +86,26 @@ class instructions extends Phaser.Scene {
             instr.setText(all_instructions[index]);
             instr.alpha = 0;
         }
+
+    }
+    home() {
+        this.scene.sendToBack('instructionsScene');
+        this.scene.stop('instructionsScene');
+        this.scene.start('titleScene');
+        this.scene.bringToTop('titleScene');
+        this.scene.switch('titleScene');
+        
+    }
+    go() {
+        RESET_VISITED_BUILDINGS();
+        this.scene.start('gameScene');
+        this.scene.switch('gameScene');
+        this.scene.bringToTop('gameScene');
+        this.scene.start('infoScene');
+        this.scene.start('panelScene');
+        this.scene.start('questionScene');
+
+        //this.scene.sendToBack('instructionsScene');
 
     }
 }
