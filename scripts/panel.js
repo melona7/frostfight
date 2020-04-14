@@ -6,6 +6,7 @@ let gameOptions = {
 let sound_button;
 let mute_button;
 let home_button;
+let question_button;
 let timeLeft;
 let time_text;
 let music;
@@ -99,7 +100,9 @@ class panel extends Phaser.Scene {
       home_button.setInteractive({ useHandCursor: true });
       home_button.on('pointerdown', () => this.home());
       //this.add.sprite(723, 35, "soundon");
-      this.add.sprite(770, 35, "question");
+      question_button = this.add.sprite(770, 35, "question");
+      question_button.setInteractive({ useHandCursor: true });
+      question_button.on('pointerdown', () => this.question());
     
       //var text = this.add.text(50,50, 'scene2!');
       timeLeft = gameOptions.initialTime;
@@ -142,6 +145,7 @@ class panel extends Phaser.Scene {
               //console.log(energyMask.x);
               if(timeLeft == 0){
                 //stop somehow lol
+                RESET_VISITED_BUILDINGS();
                 this.scene.switch('loseScene');
                 this.scene.bringToTop('loseScene');
                 //this.scene.moveDown('gameScene');
@@ -192,11 +196,71 @@ class panel extends Phaser.Scene {
     }
 
     home() {
+      RESET_VISITED_BUILDINGS();
       this.scene.stop('gameScene');
       this.scene.stop('panelScene');
       music.stop();
       this.scene.switch('titleScene');
       this.scene.bringToTop('titleScene');
+    }
+
+    question() {
+        this.scene.pause('gameScene');
+        this.scene.pause('panelScene');
+        this.scene.bringToTop('questionScene');
+
+        //this.scene.switch('infoScene');
+    //     popup_text = "INSTRUCTIONS\n " +
+    //     "Check out the panel on the top of the game screen for your assigned destination under 'Location'. This is the building you will need to find before time runs out!" +
+    //     "Use the arrow keys to navigate around the map. You have 45 seconds to get to your destination, or you will freeze and lose the game! " +
+    //    "Running low on time? Stop by at a building where you can warm up (these buildings will be indicated by …) for an extra 5 seconds. You can only get extra time from each warm-up building once." +
+    //    "Step on the star in front of a building to learn what building it is and a fun fact about it. The game timer will pause while you are stopped at a star." +
+    //    "Beware of the M on the diag - stepping on it is equivalent to failing both the game and your first blue book exam!" +
+    //    "If you get to your destination before time runs out, you’ve won the game! Winter in Michigan will be no problem for you." +
+    //    "If you run out of time, you will be forced to listen to the Ohio State fight song, but you are welcome to try playing again.";
+    //     this.scene.bringToTop('infoScene');
+
+    //     var graphics = this.make.graphics();
+
+    //     // graphics.fillStyle(0xffffff);
+    //     graphics.fillRect(152, 133, 320, 250);
+
+    //     var mask = new Phaser.Display.Masks.GeometryMask(this, graphics);
+
+    //     //var text = this.add.text(160, 280, content, { fontFamily: 'Arial', color: '#00ff00', wordWrap: { width: 310 } }).setOrigin(0);
+
+    //     popup_text.setMask(mask);
+
+    //     //  The rectangle they can 'drag' within
+    //     var zone = this.add.zone(152, 130, 320, 256).setOrigin(0).setInteractive();
+
+    //     zone.on('pointermove', function (pointer) {
+
+    //         if (pointer.isDown)
+    //         {
+    //             popup_text.y += (pointer.velocity.y / 10);
+
+    //             popup_text.y = Phaser.Math.Clamp(popup_text.y, -400, 300);
+    //         }
+
+        // });
+        
+        
+    //     this.cameras.main.transparent = true;
+    //     graphics = this.add.graphics();
+    //     var drop_shadow = graphics.fillStyle(0x000000, 0.5);
+
+    //     //  32px radius on the corners
+    //     drop_shadow.fillRoundedRect(260, 210, 300, 200, 5);
+
+    //     graphics.lineStyle(2, 0x000000, 2);
+  
+    //   //  32px radius on the corners
+    //     graphics.strokeRoundedRect(248, 198, 305, 205, 5);
+    //     graphics.fillStyle(0xffffff, 1);
+
+    //     //  32px radius on the corners
+        // graphics.fillRoundedRect(250, 200, 300, 200, 5);
     }
 
 

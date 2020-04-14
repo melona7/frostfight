@@ -50,6 +50,8 @@ class splash extends Phaser.Scene {
 
          this.load.image("home_alt", "assets/home_white.png");
 
+         this.load.image("graybox", "assets/grayBox.png");
+
     }
     create() {
         var bg = this.add.sprite(0,0,'background');
@@ -102,11 +104,13 @@ class splash extends Phaser.Scene {
 
     }
     clickButton() {
+        RESET_VISITED_BUILDINGS();
         this.scene.start('gameScene');
         this.scene.switch('gameScene');
         this.scene.bringToTop('gameScene');
         this.scene.start('infoScene');
         this.scene.start('panelScene');
+        this.scene.start('questionScene');
     }   
 
     clickIn() {

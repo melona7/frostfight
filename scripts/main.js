@@ -168,6 +168,7 @@ class main extends Phaser.Scene {
             music.stop();
             //have to stop info scene from popping up while we move after winning
             this.scene.stop('infoScene');
+            RESET_VISITED_BUILDINGS();
 
         }
 

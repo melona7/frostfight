@@ -45,6 +45,7 @@ class win extends Phaser.Scene {
         this.scene.start('gameScene');
         this.scene.start('infoScene');
         this.scene.start('panelScene');
+        RESET_VISITED_BUILDINGS();
         
     }  
     homewin() {
