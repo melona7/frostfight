@@ -22,18 +22,28 @@ class instructions extends Phaser.Scene {
 
         this.cameras.main.setBackgroundColor("#000000");
         
-        var next_text = this.add.text(300,300, 'next');
-        var back_text = this.add.text(100,300, 'back');
+        var next_text = this.add.text(700,470, 'next');
+        var back_text = this.add.text(100,470, 'back');
+        var start_text = this.add.text(400,470, 'start');
         console.log(all_instructions[index]);
-        instr = this.add.text(100, 100, all_instructions[index], {wordWrap: {width: 450}
+
+        this.add.text(200, 100, "HOW TO PLAY", {font: "22px monospace"});
+        instr = this.add.text(200, 200, all_instructions[index], {wordWrap: {width: 450}
         });
         next_text.setInteractive({ useHandCursor: true });
         next_text.on('pointerdown', () => this.next());
 
         back_text.setInteractive({ useHandCursor: true });
         back_text.on('pointerdown', () => this.back());
+
+        back_text.setInteractive({ useHandCursor: true });
+        back_text.on('pointerdown', () => this.go());
+
+
         
         instr.alpha = 1;
+
+        var home_link = this.add.image(740, 60, 'home_alt');
 
 
 
