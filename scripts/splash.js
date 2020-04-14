@@ -110,6 +110,10 @@ class splash extends Phaser.Scene {
     }   
 
     clickIn() {
+        this.scene.start('instructionsScene');
+        this.scene.switch('instructionsScene');
+        this.scene.bringToTop('instructionsScene');
+
 
     }
 
