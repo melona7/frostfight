@@ -32,7 +32,7 @@ class question extends Phaser.Scene {
         // text settings
 
         this.add
-        .text(200, 120, instruction_title, {
+        .text(200, 110, instruction_title, {
         font: "20px monospace",
         fill: "#ffffff",
         align: 'center',
@@ -40,7 +40,7 @@ class question extends Phaser.Scene {
         });
 
         new_text = this.add
-        .text(60, 190, instruction_text, {
+        .text(60, 170, instruction_text, {
         font: "16px monospace",
         fill: "#ffffff",
         align: 'left',
