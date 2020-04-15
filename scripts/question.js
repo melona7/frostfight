@@ -9,13 +9,15 @@ class question extends Phaser.Scene {
     preload() {
     }
     create() {
-        instruction_text = "INSTRUCTIONS \n*(press any arrow key to resume game)* \n\n" +
-        "1. Check out the panel on the top of the game screen for your assigned destination under 'Location'. This is the building you will need to find before time runs out! \n" +
-        "2. Use the arrow keys to navigate around the map. You have 45 seconds to get to your destination, or you will freeze and lose the game! \n" +
-        "3. Running low on time? Stop by at a building where you can warm up and regain 5 seconds on your timer. You can only get extra time from each warm-up building once per game. \n" +
-        "4. Step on the star in front of a building to learn what building it is and a fun fact about it. The game timer will pause while you are stopped at a star. \n" +
-        "5. Beware of the M on the diag - stepping on it is equivalent to failing both the game and your first blue book exam! \n" + 
-        "6. If you get to your destination before time runs out, you've won the game! Winter in Michigan will be no problem for you.\n";
+        instruction_text = 
+        "1. Check out the panel on the top of the game screen for your assigned destination under 'Location'. This is the building you will need to find before time runs out! \n\n" +
+        "2. Use the arrow keys to navigate around the map. You have 45 seconds to get to your destination, or you will freeze and lose the game! \n\n" +
+        "3. Running low on time? Stop by at a building where you can warm up and regain 5 seconds on your timer. You can only get extra time from each warm-up building once per game. \n\n" +
+        "4. Step on the star in front of a building to learn what building it is and a fun fact about it. The game timer will pause while you are stopped at a star. \n\n" +
+        "5. Beware of the M on the diag - stepping on it is equivalent to failing both the game and your first blue book exam! \n\n" + 
+        "6. If you get to your destination before time runs out, you've won the game! Winter in Michigan will be no problem for you.\n\n";
+
+        let instruction_title = "INSTRUCTIONS \n*(press any arrow key to resume game)* \n\n";
         
         this.cameras.main.transparent = true;
         //this.cameras.main.setBackgroundColor('#000000');
@@ -28,13 +30,22 @@ class question extends Phaser.Scene {
         drop_shadow.fillRoundedRect(25, 90, 750, 430, 5);
         
         // text settings
-        new_text = this.add
-        .text(30, 100, instruction_text, {
-        font: "18px monospace",
+
+        this.add
+        .text(200, 120, instruction_title, {
+        font: "20px monospace",
         fill: "#ffffff",
         align: 'center',
-        wordWrap: {width: 730},
-        })
+        wordWrap: {width: 700},
+        });
+
+        new_text = this.add
+        .text(60, 190, instruction_text, {
+        font: "16px monospace",
+        fill: "#ffffff",
+        align: 'left',
+        wordWrap: {width: 700},
+        });
     }
     update() {
         new_text.setText(instruction_text);
