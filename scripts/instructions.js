@@ -22,6 +22,7 @@ class instructions extends Phaser.Scene {
     preload() {
     }
     create() {
+        index = 0;
 
         this.cameras.main.setBackgroundColor("#000000");
         
