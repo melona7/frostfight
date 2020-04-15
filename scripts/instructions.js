@@ -134,10 +134,10 @@ class instructions extends Phaser.Scene {
             instr.setText(all_instructions[index]);
             console.log(all_images[index]);
             img.destroy(true);
-            if (index == 2) {
+            if (index == 3) {
                 img = this.physics.add.sprite(400, 330, "fire_atlas", "fire_0.png").play("fire", true);
             }
-            else if (index == 3) {
+            else if (index == 2) {
                 img = this.physics.add.sprite(400, 330, "star_atlas", "star_0.png").play("star", true);
             }
             else {
