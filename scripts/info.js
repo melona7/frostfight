@@ -39,8 +39,8 @@ class info extends Phaser.Scene {
         .text(260, 210, popup_text, {
         font: "18px monospace",
         fill: "#000000",
-        align: 'justify',
-        wordWrap: {width: 280},
+        align: 'left',
+        wordWrap: {width: 290},
     })
 
         var handle = 'window' + this.count++;
