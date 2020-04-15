@@ -41,6 +41,9 @@ class splash extends Phaser.Scene {
          /* STAR SPRITE ASSESTS */
          this.load.atlas("star_atlas", "sprites/star/star_sheet.png", 
          "sprites/star/star_sheet.json");
+
+         this.load.atlas("fire_atlas", "sprites/fire/fire.png", 
+         "sprites/fire/fire.json");
  
          this.load.image("blockm", "assets/block-m-maize.png");
  
@@ -52,6 +55,11 @@ class splash extends Phaser.Scene {
          this.load.image('start_alt', 'assets/start_alt.png');
 
          //this.load.image("graybox", "assets/grayBox.png");
+
+         this.load.image("keys", "assets/keys.png");
+         this.load.image("location", "assets/loc.png");
+
+         this.load.image("snow", "assets/snow.png");
 
     }
     create() {

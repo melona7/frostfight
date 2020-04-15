@@ -202,6 +202,7 @@ class panel extends Phaser.Scene {
       music.stop();
       this.scene.switch('titleScene');
       this.scene.bringToTop('titleScene');
+      this.scene.start('titleScene');
     }
 
     question() {
