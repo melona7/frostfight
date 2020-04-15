@@ -12,8 +12,8 @@ class question extends Phaser.Scene {
         instruction_text = 
         "1. Check out the panel on the top of the game screen for your assigned destination under 'Location'. This is the building you will need to find before time runs out! \n\n" +
         "2. Use the arrow keys to navigate around the map. You have 45 seconds to get to your destination, or you will freeze and lose the game! \n\n" +
-        "3. Running low on time? Stop by at a building where you can warm up and regain 5 seconds on your timer. You can only get extra time from each warm-up building once per game. \n\n" +
-        "4. Step on the star in front of a building to learn what building it is and a fun fact about it. The game timer will pause while you are stopped at a star. \n\n" +
+        "3. Step on the star in front of a building to learn what building it is and a fun fact about it. The game timer will pause while you are stopped at a star. \n\n" +
+        "4. Running low on time? Some buildings are 'hot spots'. By stepping on the star at a hot spot, you earn 5 extra seconds on the timer. You can only get extra time from each hot spot once per game. \n\n" +
         "5. Beware of the M on the diag - stepping on it is equivalent to failing both the game and your first blue book exam! \n\n" + 
         "6. If you get to your destination before time runs out, you've won the game! Winter in Michigan will be no problem for you.\n\n";
 

@@ -4,11 +4,11 @@ let img;
 let all_instructions = ['Check out the panel on the top of the game screen for your assigned destination \
 under "Location". This is the building you will need to find before time runs out!', 
 "Use the arrow keys to navigate around the map. You have 45 seconds to get to your destination, \
-or you will freeze and lose the game!", 
-"Running low on time? Stop by at a building where you can warm up for an extra 5 seconds. \
-You can only get extra time from each warm-up building once.", 
+or you will freeze and lose the game!",  
 "Step on the star in front of a building to learn what building it is and a fun fact about it.\
  The game timer will pause while you are stopped at a star.", 
+ "Running low on time? Some buildings are 'hot spots'. By stepping on the star at a hot spot, you earn 5 extra seconds on the timer. \
+You can only get extra time from each hot spot once per game.",
  "Beware of the M on the diag - stepping on it is equivalent to failing both the game and your first blue book exam!",
 "If you get to your destination before time runs out, you've won the game! \
 Winter in Michigan will be no problem for you."];
@@ -93,10 +93,10 @@ class instructions extends Phaser.Scene {
             instr.setText(all_instructions[index]);
             console.log(all_images[index]);
             img.destroy(true);
-            if (index == 2) {
+            if (index == 3) {
                 img = this.physics.add.sprite(400, 330, "fire_atlas", "fire_0.png").play("fire", true);
             }
-            else if (index == 3) {
+            else if (index == 2) {
                 img = this.physics.add.sprite(400, 330, "star_atlas", "star_0.png").play("star", true);
             }
             else {
