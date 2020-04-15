@@ -70,13 +70,7 @@ class instructions extends Phaser.Scene {
             repeat: -1
         });
 
-        
-           
-
-  
-
-
-
+    
     }
     update() {
         
