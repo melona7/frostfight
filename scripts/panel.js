@@ -16,6 +16,7 @@ let heatMask;
 let stepWidth;
 let destination;
 
+
 class panel extends Phaser.Scene {
     constructor() {
         super('panelScene');

@@ -1,3 +1,5 @@
+let maintain_destination = false;
+
 class lose extends Phaser.Scene {
   constructor() {
         super({
@@ -49,6 +51,8 @@ class lose extends Phaser.Scene {
         this.scene.stop('panelScene');
         this.scene.start('gameScene')
         this.scene.start('panelScene');
+        // maintain previous destination
+        maintain_destination = true;
         RESET_VISITED_BUILDINGS();
     }
     
