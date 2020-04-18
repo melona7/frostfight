@@ -8,6 +8,7 @@ let loc = "";
 let xcoord;
 let ycoord;
 let popup_text = "ok";
+let pause_time = false;
 //let all_buildings = ['dana', 'mason', 'hatcher', 'ugli', 'west quad', 'north quad', 'randall', 'seb',];
 //let all_buildings = "hey there";
 class main extends Phaser.Scene {
@@ -203,7 +204,8 @@ class main extends Phaser.Scene {
         ycoord = star.y;
 
         this.scene.moveAbove('gameScene', 'infoScene');
-        this.scene.pause('panelScene');
+        //this.scene.pause('panelScene');
+        pause_time = true;
 
     }
 
@@ -251,6 +253,12 @@ class main extends Phaser.Scene {
         else if (prevVelocity.x > 0) player.setTexture("atlas", "freshman_right_standing.png");
         else if (prevVelocity.y < 0) player.setTexture("atlas", "freshman_back_standing.png");
         else if (prevVelocity.y > 0) player.setTexture("atlas", "freshman_front_standing.png");
+        }
+
+        // resume game timer
+        if (cursors.right.isDown || cursors.left.isDown || cursors.up.isDown || cursors.down.isDown) {
+            pause_time = false;
+            
         }
         
 
