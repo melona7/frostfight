@@ -20,16 +20,16 @@ class main extends Phaser.Scene {
 
     create() {
         let all_buildings = Object.keys(BUILDINGS);
-        console.log("possible keys", all_buildings);
         // if came from loss then play again, maintain destination
+    
         if (maintain_destination) {
+          
             maintain_destination = false;
         }
         // otherwise, choose new destination
         else {
             var value = Phaser.Math.Between(0, all_buildings.length - 1);
             loc = all_buildings[value];
-            console.log("random loc", loc);
         }
         // add base tilemap layer (campus map)
         var map = this.make.tilemap({ key: 'map' });
@@ -109,7 +109,6 @@ class main extends Phaser.Scene {
             star = this.physics.add
             .sprite(object.x, object.y, "star_atlas", "star_0.png").play("star", true);
             star.name = object.name;
-            console.log(star.name);
             stars.add(star);
         });
 
@@ -157,14 +156,12 @@ class main extends Phaser.Scene {
             if (BUILDINGS[star.name]["isWarm"] && timeLeft <= initial_game_time - 5) {
                 timeLeft += 5;
                 heatMask.x += stepWidth * 5;
-                console.log(BUILDINGS[star.name]["wasVisited"]);
             }
             // or top it off
             else if (BUILDINGS[star.name]["isWarm"] && timeLeft > initial_game_time - 5) {
                 let additional_time = initial_game_time - timeLeft;
                 timeLeft += additional_time;
                 heatMask.x += stepWidth * additional_time;
-                console.log(BUILDINGS[star.name]["wasVisited"]);
             }
             BUILDINGS[star.name]["wasVisited"] = true;
         }

@@ -53,14 +53,13 @@ class level extends Phaser.Scene {
             initial_game_time = 30;
         }
 
-        console.log("SETTING GAME TIME", initial_game_time);
 
         // start game
         RESET_VISITED_BUILDINGS();
         pause_time = false;
-        this.scene.start('gameScene');
-        this.scene.switch('gameScene');
+        //this.scene.switch('gameScene');
         this.scene.bringToTop('gameScene');
+        this.scene.start('gameScene');
         this.scene.sendToBack('levelScene');
         this.scene.start('infoScene');
         this.scene.start('panelScene');

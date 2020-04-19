@@ -42,7 +42,6 @@ class win extends Phaser.Scene {
     clickButton() {
         // replay: route to level page
         win_music.stop();
-        console.log("MUSIC STOP");
         this.scene.start('levelScene');
         this.scene.stop('gameScene');
         this.scene.stop('panelScene');

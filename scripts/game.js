@@ -162,7 +162,6 @@ const BUILDINGS = {"dana": {
 const RESET_VISITED_BUILDINGS = function() {
     let bldg_list = Object.keys(BUILDINGS);
     for (idx in bldg_list) {
-        console.log(bldg_list[idx]);
         BUILDINGS[bldg_list[idx]]["wasVisited"] = false;
     }
 }
