@@ -182,9 +182,15 @@ class main extends Phaser.Scene {
         }
 
         if(!BUILDINGS[star.name]["wasVisited"]) {
-            if (BUILDINGS[star.name]["isWarm"] && timeLeft <= 40) {
+            if (BUILDINGS[star.name]["isWarm"] && timeLeft <= gameOptions.initialTime - 5) {
                 timeLeft += 5;
                 heatMask.x += stepWidth * 5;
+                console.log(BUILDINGS[star.name]["wasVisited"]);
+            }
+            else if (BUILDINGS[star.name]["isWarm"] && timeLeft > gameOptions.initialTime - 5) {
+                let additional_time = gameOptions.initialTime - timeLeft;
+                timeLeft += additional_time;
+                heatMask.x += stepWidth * additional_time;
                 console.log(BUILDINGS[star.name]["wasVisited"]);
             }
             BUILDINGS[star.name]["wasVisited"] = true;
