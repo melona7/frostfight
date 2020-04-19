@@ -1,6 +1,6 @@
-let easy_text;
-let medium_text;
-let hard_text;
+let easy_img;
+let medium_img;
+let hard_img;
 let instr_text;
 let initial_game_time;
 
@@ -16,20 +16,21 @@ class level extends Phaser.Scene {
     create() {
         this.cameras.main.setBackgroundColor("#000000");
 
-        instr_text = this.add.text(325, 300, 'Choose your level:');
+        instr_text = this.add.text(240, 150, 'CHOOSE YOUR LEVEL:', {font: "36px monospace"});
 
-        easy_text = this.add.text(100,470, 'Easy');
-        medium_text = this.add.text(400, 470, 'Medium');
-        hard_text = this.add.text(660,470, 'Hard');
+        //easy_text = this.add.text(100,470, 'Easy');
+        easy_img = this.add.sprite(200, 350, "easy");
+        medium_img = this.add.sprite(400, 350, 'medium');
+        hard_img = this.add.sprite(600, 350, 'hard');
 
-        easy_text.setInteractive({ useHandCursor: true });
-        easy_text.on('pointerdown', () => this.select_level('easy'));
+        easy_img.setInteractive({ useHandCursor: true });
+        easy_img.on('pointerdown', () => this.select_level('easy'));
 
-        medium_text.setInteractive({ useHandCursor: true });
-        medium_text.on('pointerdown', () => this.select_level('medium'));
+        medium_img.setInteractive({ useHandCursor: true });
+        medium_img.on('pointerdown', () => this.select_level('medium'));
 
-        hard_text.setInteractive({ useHandCursor: true });
-        hard_text.on('pointerdown', () => this.select_level('hard'));
+        hard_img.setInteractive({ useHandCursor: true });
+        hard_img.on('pointerdown', () => this.select_level('hard'));
     }
 
     update() {

@@ -61,6 +61,11 @@ class splash extends Phaser.Scene {
 
          this.load.image("snow", "assets/snow.png");
 
+         this.load.image("easy", "assets/ease.png");
+         this.load.image("medium", "assets/med.png");
+         this.load.image("hard", "assets/hard.png");
+         
+
     }
     create() {
         var bg = this.add.sprite(0,0,'background');
