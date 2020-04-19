@@ -1,4 +1,5 @@
 let info_text;
+let fire;
 
 class info extends Phaser.Scene {
     constructor() {
@@ -8,7 +9,7 @@ class info extends Phaser.Scene {
         this.height = 300;
     }
     preload() {
-
+        this.load.image("fire", "assets/fire.png");
     }
     create() {
 
@@ -54,9 +55,23 @@ class info extends Phaser.Scene {
 
         });
 
+        fire = this.add.sprite(525, 385,'fire');
+        fire.visible = false;
+
         cursors = this.input.keyboard.createCursorKeys();
     }
     update() {
+
+        if(showFire == true) {
+            console.log("why not");
+            fire.displayWidth = 30;
+            fire.displayHeight = 30;
+            fire.visible = true;
+            console.log("yes");
+        } else {
+            console.log("no");
+            fire.visible = false;
+        }
 
         info_text.setText(popup_text);
 
@@ -64,6 +79,7 @@ class info extends Phaser.Scene {
             this.scene.resume('gameScene');
             this.scene.resume('panelScene');
             this.scene.sendToBack('infoScene');
+            showFire = false;
             
         }
     }
