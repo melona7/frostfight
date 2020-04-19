@@ -196,21 +196,12 @@ class main extends Phaser.Scene {
             BUILDINGS[star.name]["wasVisited"] = true;
         }
         popup_text = "You made it to " + BUILDINGS[star.name]["display_name"] + "! ";
-        //loc = star.name;
         popup_text += BUILDINGS[star.name]["message"];
 
-
-        // if (star.name == "dana") {
-        //   popup_text = "dana's text";
-        //   console.log("is it dana");
-        // }
-        //console.log(star.name);
-        //console.log(star.x, star.y); 
         xcoord = star.x;
         ycoord = star.y;
 
         this.scene.moveAbove('gameScene', 'infoScene');
-        //this.scene.pause('panelScene');
         pause_time = true;
 
     }

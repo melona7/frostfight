@@ -6,7 +6,7 @@ class win extends Phaser.Scene {
     }
     preload() {
         //this.load.audio("win_music", "audio/clapGlee.mp3");
-        // this.load.image("home_alt", "assets/home_white.png");
+        //this.load.image("home_alt", "assets/home_white.png");
     }
     create() {
 
@@ -17,8 +17,6 @@ class win extends Phaser.Scene {
 
       this.cameras.main.setBackgroundColor("#000000");
 
-      // start music
-      //win_music = this.sound.add('win_music');
       let music_config = 
       {
           mute: this.game.sound.mute,

@@ -66,17 +66,6 @@ class splash extends Phaser.Scene {
         var bg = this.add.sprite(0,0,'background');
         bg.setOrigin(0,0);
 
-
-
-        // let graphics = this.add.graphics();
-
-        // graphics.fillStyle(0x000080, 1);
-
-        // graphics.fillRect(350, 400, 115, 40);
-
-   
-
-        //this.add.sprite(400, 200, 'title');
         var title_an = this.physics.add.sprite(400, 200, "title_atlas", "frame_00.png");
 
         const anims = this.anims;
@@ -90,7 +79,6 @@ class splash extends Phaser.Scene {
         title_an.anims.play('title');
 
         var title = this.add.text(215, 235, 'A Race Against Winter', {font: '30px Courier', fill: '#ffffff'});
-        //var subtitle = this.add.text(10, 130, '(no lost freshman were harmed and/or frozen in the creation of this game)', {font: '18px Courier', fill: '#ffffff'});
 
         this.time.addEvent({
             delay: 6000,

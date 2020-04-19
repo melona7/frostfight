@@ -100,7 +100,6 @@ class instructions extends Phaser.Scene {
 
             }
               
-            //this.add.tween(text).to( { alpha: 0 }, 2000, "Linear", true);
             instr.setText(all_instructions[index]);
             console.log(all_images[index]);
             img.destroy(true);
@@ -149,7 +148,6 @@ class instructions extends Phaser.Scene {
             if(index == 0) {
                 back_text.setColor("#333333");
             }
-            //this.add.tween(text).to( { alpha: 0 }, 2000, "Linear", true);
             instr.setText(all_instructions[index]);
             console.log(all_images[index]);
             img.destroy(true);
@@ -192,8 +190,6 @@ class instructions extends Phaser.Scene {
         this.scene.start('infoScene');
         this.scene.start('panelScene');
         this.scene.start('questionScene');
-
-        //this.scene.sendToBack('instructionsScene');
 
     }
 }
