@@ -107,7 +107,9 @@ class instructions extends Phaser.Scene {
                 img = this.physics.add.sprite(400, 330, "fire_atlas", "fire_0.png").play("fire", true);
             }
             else if (index == 2) {
-                img = this.physics.add.sprite(400, 330, "star_atlas", "star_0.png").play("star", true);
+                img = this.physics.add.sprite(400, 330, "star_atlas", "star_0.png");
+                img.setScale(3, 3);
+                img.play("star", true);
             }
             else {
                 img = this.add.sprite(400, 330, all_images[index]);
@@ -156,6 +158,7 @@ class instructions extends Phaser.Scene {
             }
             else if (index == 2) {
                 img = this.physics.add.sprite(400, 330, "star_atlas", "star_0.png").play("star", true);
+                img.setScale(3, 3);
             }
             else {
                 img = this.add.sprite(400, 330, all_images[index]);

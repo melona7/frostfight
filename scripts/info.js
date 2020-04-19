@@ -9,7 +9,7 @@ class info extends Phaser.Scene {
         this.height = 300;
     }
     preload() {
-        this.load.image("fire", "assets/fire.png");
+    
     }
     create() {
 
@@ -55,8 +55,17 @@ class info extends Phaser.Scene {
 
         });
 
-        fire = this.add.sprite(525, 385,'fire');
+        fire = this.physics.add.sprite(525, 370, "fire_atlas", "fire_0.png");
+        fire.setScale(0.3, 0.33);
         fire.visible = false;
+
+        const anims = this.anims;
+        anims.create({
+            key: "fire",
+            frames: anims.generateFrameNames("fire_atlas", { prefix: "fire_", suffix: '.png', start: 0, end: 5, zeroPad: 1 }),
+            frameRate: 10,
+            repeat: -1
+        });
 
         cursors = this.input.keyboard.createCursorKeys();
     }
@@ -64,9 +73,10 @@ class info extends Phaser.Scene {
 
         if(showFire == true) {
             console.log("why not");
-            fire.displayWidth = 30;
-            fire.displayHeight = 30;
+            // fire.displayWidth = 30;
+            // fire.displayHeight = 30;
             fire.visible = true;
+            fire.play("fire", true);
             console.log("yes");
         } else {
             console.log("no");
