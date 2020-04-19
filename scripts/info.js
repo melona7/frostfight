@@ -15,24 +15,21 @@ class info extends Phaser.Scene {
 
         this.cameras.main.transparent = true;
 
+        // adding drop shadow
         graphics = this.add.graphics();
         var drop_shadow = graphics.fillStyle(0x000000, 0.5);
-
-        //  32px radius on the corners
         drop_shadow.fillRoundedRect(260, 210, 300, 200, 5);
 
+        // adding outline
         graphics.lineStyle(2, 0x000000, 2);
-  
-      //  32px radius on the corners
         graphics.strokeRoundedRect(248, 198, 305, 205, 5);
         graphics.fillStyle(0xffffff, 1);
 
-        //  32px radius on the corners
+        // adding rounded rectangle
         graphics.fillRoundedRect(250, 200, 300, 200, 5);
 
-        console.log(popup_text);
-        console.log("LOC 2", loc);
-
+ 
+        // pop up text generated
         info_text = this.add.text(260, 210, popup_text, {
 	        font: "18px monospace",
 	        fill: "#000000",
@@ -40,21 +37,8 @@ class info extends Phaser.Scene {
 	        wordWrap: {width: 290},
     	})
 
-        var handle = 'window' + this.count++;
-
-        console.log(xcoord, ycoord);
-
-        var win = this.add.zone(250, 150, 300, 300).setInteractive().setOrigin(0);
-
-        this.input.setDraggable(win);
-
-        win.on('drag', function (pointer, dragX, dragY) {
-
-            this.x = dragX;
-            this.y = dragY;
-
-        });
-
+       
+        // create fire sprite and animations
         fire = this.physics.add.sprite(525, 370, "fire_atlas", "fire_0.png");
         fire.setScale(0.3, 0.33);
         fire.visible = false;
@@ -70,21 +54,18 @@ class info extends Phaser.Scene {
         cursors = this.input.keyboard.createCursorKeys();
     }
     update() {
-
+        // show sprite if hot spot
         if(showFire == true) {
-            console.log("why not");
-            // fire.displayWidth = 30;
-            // fire.displayHeight = 30;
             fire.visible = true;
             fire.play("fire", true);
-            console.log("yes");
         } else {
-            console.log("no");
             fire.visible = false;
         }
 
+        // set pop up text
         info_text.setText(popup_text);
 
+        // resume scene
         if (cursors.right.isDown || cursors.left.isDown || cursors.up.isDown || cursors.down.isDown) {
             this.scene.resume('gameScene');
             this.scene.resume('panelScene');

@@ -16,23 +16,6 @@ class main extends Phaser.Scene {
     }
     preload() {
 
-        // /* TILES AND MAP ASSESTS */
-        // this.load.image("tiles", "tiles/campus_set.png");
-        // this.load.tilemapTiledJSON("map", "tiles/CampusMap.json");
-        
-        // /* PLAYER SPRITE ASSESTS */
-        // this.load.atlas("atlas", "sprites/freshman_sprite_sheet.png", 
-        // "sprites/freshman_sprite_sheet.json");
-
-        // /* STAR SPRITE ASSESTS */
-        // this.load.atlas("star_atlas", "sprites/star/star_sheet.png", 
-        // "sprites/star/star_sheet.json");
-
-        // this.load.image("blockm", "assets/block-m-maize.png");
-
-
-        // /* MESSAGE BOX ASSETS*/
-        // this.load.image("textbox", "assets/textbox.png");
     }
 
     create() {
@@ -72,7 +55,6 @@ class main extends Phaser.Scene {
         collision = this.physics.add.collider(player, worldLayer);
 
         // have the camera follow the player
-        //const camera = this.cameras.add(0, 0, 800, 500);
         const camera = this.cameras.main;
         camera.startFollow(player);
         camera.setViewport(0, 71, 800, 500);
@@ -131,6 +113,7 @@ class main extends Phaser.Scene {
             stars.add(star);
         });
 
+        // brass m sprite
         let mcoords = map.findObject("brassm", obj => obj.name === "block m");
         m = this.physics.add
         .image(mcoords.x, mcoords.y, "blockm");
@@ -139,38 +122,22 @@ class main extends Phaser.Scene {
         this.physics.add.overlap(player, stars, this.build, null, this);
         this.physics.add.overlap(player, m, this.tragedy, null, this);
 
-        console.log("STAR 2", stars.children.entries[0].name);
-
-        // get random building
-
-    }
-
-    show_message(hit_star) {
-        let message_box = this.add.group();
-        let text_box = this.add.sprite(hit_star.x, hit_star.y, "textbox");
-        text_box.setDisplaySize(150, 100);
-        let message = "Hello World";
-
-        message_box.add(text_box);
-        message_box.add(message);
-
-
     }
 
     // player loses when they step on block M
     tragedy(player, blockm) {
-      this.scene.switch('loseScene');
-            this.scene.bringToTop('loseScene');
-            music.stop();
-            //have to stop info scene from popping up while we move after winning
-            this.scene.stop('infoScene');
+        this.scene.switch('loseScene');
+        this.scene.bringToTop('loseScene');
+        music.stop();
+        //have to stop info scene from popping up while we move after winning
+        this.scene.stop('infoScene');
+        this.scene.stop('questionScene');
     }
 
     /* Call back to this function whenever there's overlap with player and stars */
     build(player, star) {
-        //this.show_message(star);
+        // if reached destination, we win
         if (star.name == loc) {
-            console.log("GAME COMPLETE");
             this.scene.switch('winScene');
             this.scene.bringToTop('winScene');
             music.stop();
@@ -178,19 +145,21 @@ class main extends Phaser.Scene {
             this.scene.stop('infoScene');
             this.scene.stop('questionScene');
             RESET_VISITED_BUILDINGS();
-
         }
-
+        // if hot spot, add fire animation
         if(BUILDINGS[star.name]["isWarm"]) {
             showFire = true;
         }
 
+        // if we haven't visited the hot spot
         if(!BUILDINGS[star.name]["wasVisited"]) {
+            // add 5 seconds
             if (BUILDINGS[star.name]["isWarm"] && timeLeft <= initial_game_time - 5) {
                 timeLeft += 5;
                 heatMask.x += stepWidth * 5;
                 console.log(BUILDINGS[star.name]["wasVisited"]);
             }
+            // or top it off
             else if (BUILDINGS[star.name]["isWarm"] && timeLeft > initial_game_time - 5) {
                 let additional_time = initial_game_time - timeLeft;
                 timeLeft += additional_time;
@@ -211,33 +180,32 @@ class main extends Phaser.Scene {
     }
 
     update() {
-        // Apply the controls to the camera each update tick of the game
-        // Stop any previous movement from the last frame
+        // apply the controls to the camera each update tick of the game
+        // stop any previous movement from the last frame
         const speed = 175;
         const prevVelocity = player.body.velocity.clone();
         player.body.setVelocity(0);
     
-        // Horizontal movement
+        // horizontal movement
         if (cursors.left.isDown) {
-        player.body.setVelocityX(-100);
-        
-        } else if (cursors.right.isDown) {
-        // console.log("width", heatBar.width);
-        // heatBar.setDisplaySize(heatBar.width, 30);
-        player.body.setVelocityX(100);
-        //console.log(collision);
+            player.body.setVelocityX(-100);
+        } 
+        else if (cursors.right.isDown) {
+            player.body.setVelocityX(100);
         }
-  
-        // Vertical movement
+
+        // vertical movement
         if (cursors.up.isDown) {
-        player.body.setVelocityY(-100);
-        } else if (cursors.down.isDown) {
-        player.body.setVelocityY(100);
+            player.body.setVelocityY(-100);
+        } 
+        else if (cursors.down.isDown) {
+            player.body.setVelocityY(100);
         }
   
         // Normalize and scale the velocity so that player can't move faster along a diagonal
         player.body.velocity.normalize().scale(speed);
     
+        // sprite animations
         if (cursors.left.isDown) {
         player.anims.play("freshman_left_walk", true);
         } else if (cursors.right.isDown) {
