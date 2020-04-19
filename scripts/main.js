@@ -9,6 +9,7 @@ let xcoord;
 let ycoord;
 let popup_text = "ok";
 let pause_time = false;
+let showFire = false;
 class main extends Phaser.Scene {
     constructor() {
         super('gameScene');
@@ -178,6 +179,10 @@ class main extends Phaser.Scene {
             this.scene.stop('questionScene');
             RESET_VISITED_BUILDINGS();
 
+        }
+
+        if(BUILDINGS[star.name]["isWarm"]) {
+            showFire = true;
         }
 
         if(!BUILDINGS[star.name]["wasVisited"]) {
