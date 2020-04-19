@@ -20,7 +20,6 @@ class question extends Phaser.Scene {
         let instruction_title = "INSTRUCTIONS \n*(press any arrow key to resume game)* \n\n";
         
         this.cameras.main.transparent = true;
-        //this.cameras.main.setBackgroundColor('#000000');
 
         // popup background
         graphics = this.add.graphics();

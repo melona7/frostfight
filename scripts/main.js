@@ -9,8 +9,6 @@ let xcoord;
 let ycoord;
 let popup_text = "ok";
 let pause_time = false;
-//let all_buildings = ['dana', 'mason', 'hatcher', 'ugli', 'west quad', 'north quad', 'randall', 'seb',];
-//let all_buildings = "hey there";
 class main extends Phaser.Scene {
     constructor() {
         super('gameScene');
@@ -183,29 +181,26 @@ class main extends Phaser.Scene {
         }
 
         if(!BUILDINGS[star.name]["wasVisited"]) {
-            if (BUILDINGS[star.name]["isWarm"] && timeLeft <= 40) {
+            if (BUILDINGS[star.name]["isWarm"] && timeLeft <= gameOptions.initialTime - 5) {
                 timeLeft += 5;
                 heatMask.x += stepWidth * 5;
+                console.log(BUILDINGS[star.name]["wasVisited"]);
+            }
+            else if (BUILDINGS[star.name]["isWarm"] && timeLeft > gameOptions.initialTime - 5) {
+                let additional_time = gameOptions.initialTime - timeLeft;
+                timeLeft += additional_time;
+                heatMask.x += stepWidth * additional_time;
                 console.log(BUILDINGS[star.name]["wasVisited"]);
             }
             BUILDINGS[star.name]["wasVisited"] = true;
         }
         popup_text = "You made it to " + BUILDINGS[star.name]["display_name"] + "! ";
-        //loc = star.name;
         popup_text += BUILDINGS[star.name]["message"];
 
-
-        // if (star.name == "dana") {
-        //   popup_text = "dana's text";
-        //   console.log("is it dana");
-        // }
-        //console.log(star.name);
-        //console.log(star.x, star.y); 
         xcoord = star.x;
         ycoord = star.y;
 
         this.scene.moveAbove('gameScene', 'infoScene');
-        //this.scene.pause('panelScene');
         pause_time = true;
 
     }

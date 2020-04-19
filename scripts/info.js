@@ -1,4 +1,3 @@
-//let new_cursors;
 let info_text;
 
 class info extends Phaser.Scene {
@@ -13,9 +12,7 @@ class info extends Phaser.Scene {
     }
     create() {
 
-        //this.cameras.main.setViewport(250, 150, 500, 500);
         this.cameras.main.transparent = true;
-        //this.cameras.main.setBackgroundColor('#000000');
 
         graphics = this.add.graphics();
         var drop_shadow = graphics.fillStyle(0x000000, 0.5);
@@ -35,24 +32,18 @@ class info extends Phaser.Scene {
         console.log(popup_text);
         console.log("LOC 2", loc);
 
-        info_text = this.add
-        .text(260, 210, popup_text, {
-        font: "18px monospace",
-        fill: "#000000",
-        align: 'left',
-        wordWrap: {width: 290},
-    })
+        info_text = this.add.text(260, 210, popup_text, {
+	        font: "18px monospace",
+	        fill: "#000000",
+	        align: 'left',
+	        wordWrap: {width: 290},
+    	})
 
         var handle = 'window' + this.count++;
 
         console.log(xcoord, ycoord);
 
         var win = this.add.zone(250, 150, 300, 300).setInteractive().setOrigin(0);
-
-        // let message = "hello there, press any arrow key to continue playing";
-        // this.add.text(xcoord, ycoord, message);
-
-        //var demo = new func(handle, win);
 
         this.input.setDraggable(win);
 
@@ -61,13 +52,9 @@ class info extends Phaser.Scene {
             this.x = dragX;
             this.y = dragY;
 
-            //demo.refresh()
-
         });
 
         cursors = this.input.keyboard.createCursorKeys();
-
-        //this.scene.add(handle, demo, true);
     }
     update() {
 

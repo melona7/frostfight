@@ -1,6 +1,4 @@
 
-//let gameScene = new main; 
-
 const config = {
     type: Phaser.AUTO,
     width: 800,
@@ -21,9 +19,6 @@ const config = {
 };
   
 const game = new Phaser.Game(config);
-// game.scene.add('gameScene', gameScene);
-// game.scene.start('gameScene');
-
 
 const BUILDINGS = {"dana": {
                        "message": "For added warmth, hit up the top floor of this building and enjoy the benefits of its 4,000-square-foot skylight.",
