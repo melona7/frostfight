@@ -1,8 +1,8 @@
 var graphics;
 
-let gameOptions = {
-  initialTime: 45
-}
+// let gameOptions = {
+//   initialTime: 45
+// }
 let sound_button;
 let mute_button;
 let home_button;
@@ -42,6 +42,8 @@ class panel extends Phaser.Scene {
       //   this.load.image("question", "assets/question.png");
     }
     create() {
+        //initialTime = game_time;
+        console.log("RECEIVED GAME TIME", game_time);
         
         // start music
         music = this.sound.add('background_music');
@@ -80,18 +82,18 @@ class panel extends Phaser.Scene {
       graphics.strokeRoundedRect(1, 1, 798, 70, 0);
 
       this.add
-      .text(250, 27, "Time Left:", {
+      .text(245, 27, "Time Left:", {
         font: "18px monospace",
         fill: "#000000",
       })
 
       this.add
-      .text(400, 14, "Location:", {
+      .text(415, 14, "Location:", {
         font: "18px monospace",
         fill: "#000000",
       })
       destination = this.add
-                    .text(400, 32, "", {
+                    .text(415, 32, "", {
                         font: "18px monospace",
                         fill: "#000000",
                         wordWrap: {width: 250}
@@ -106,7 +108,8 @@ class panel extends Phaser.Scene {
       question_button.on('pointerdown', () => this.question());
     
       //var text = this.add.text(50,50, 'scene2!');
-      timeLeft = gameOptions.initialTime;
+      //timeLeft = gameOptions.initialTime;
+      timeLeft = game_time;
 
       // the energy container. A simple sprite
       let heatContainer = this.add.sprite(130, 35, "heatcontainer").setScrollFactor(0);
@@ -124,7 +127,7 @@ class panel extends Phaser.Scene {
       heatBar.mask = new Phaser.Display.Masks.BitmapMask(this, heatMask);
 
       time_text = this.add
-      .text(360, 27, "60", {
+      .text(355, 27, "60", {
         font: "18px monospace",
         fill: "#000000",
       })
@@ -141,7 +144,8 @@ class panel extends Phaser.Scene {
 
                 // dividing enery bar width by the number of seconds gives us the amount
                 // of pixels we need to move the energy bar each second
-                stepWidth = heatMask.displayWidth / gameOptions.initialTime;
+                //stepWidth = heatMask.displayWidth / gameOptions.initialTime;
+                stepWidth = heatMask.displayWidth / game_time;
 
                 // moving the mask
                 

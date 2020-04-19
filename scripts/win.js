@@ -36,16 +36,20 @@ class win extends Phaser.Scene {
 
     }
     clickButton() {
+        // replay: route to level page
         win_music.stop();
         console.log("MUSIC STOP");
+        this.scene.start('levelScene');
         this.scene.stop('gameScene');
         this.scene.stop('panelScene');
-  		  this.scene.bringToTop('gameScene');
-  		  this.scene.sendToBack('winScene');
-        this.scene.start('gameScene');
-        this.scene.start('infoScene');
-        this.scene.start('panelScene');
-        RESET_VISITED_BUILDINGS();
+  		this.scene.bringToTop('levelScene');
+        this.scene.sendToBack('winScene');
+        this.scene.stop('infoScene');
+        this.scene.stop('questionScene');
+        // this.scene.start('gameScene');
+        // this.scene.start('infoScene');
+        // this.scene.start('panelScene');
+        //RESET_VISITED_BUILDINGS();
         
     }  
     homewin() {

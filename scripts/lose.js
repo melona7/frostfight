@@ -43,17 +43,21 @@ class lose extends Phaser.Scene {
 
     }
     clickButton() {
+        // replay: route to level page
         lose_music.stop();
+        this.scene.start('levelScene');
         this.scene.sendToBack('loseScene');
-        this.scene.bringToTop('gameScene');
-        this.scene.start('infoScene');
+        this.scene.bringToTop('levelScene');
+        //this.scene.start('infoScene');
         this.scene.stop('gameScene');
         this.scene.stop('panelScene');
-        this.scene.start('gameScene')
-        this.scene.start('panelScene');
+        this.scene.stop('questionScene');
+        this.scene.stop('infoScene');
+        // this.scene.start('gameScene')
+        // this.scene.start('panelScene');
         // maintain previous destination
         maintain_destination = true;
-        RESET_VISITED_BUILDINGS();
+        //RESET_VISITED_BUILDINGS();
     }
     
     homelose() {

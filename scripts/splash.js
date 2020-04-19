@@ -113,13 +113,16 @@ class splash extends Phaser.Scene {
 
     }
     clickButton() {
-        RESET_VISITED_BUILDINGS();
-        this.scene.start('gameScene');
-        this.scene.switch('gameScene');
-        this.scene.bringToTop('gameScene');
-        this.scene.start('infoScene');
-        this.scene.start('panelScene');
-        this.scene.start('questionScene');
+        // RESET_VISITED_BUILDINGS();
+        // this.scene.start('gameScene');
+        // this.scene.switch('gameScene');
+        // this.scene.bringToTop('gameScene');
+        // this.scene.start('infoScene');
+        // this.scene.start('panelScene');
+        // this.scene.start('questionScene');
+        // route to level page
+        this.scene.start('levelScene');
+        this.scene.bringToTop('levelScene');
     }   
 
     clickIn() {
