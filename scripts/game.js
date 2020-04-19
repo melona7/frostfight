@@ -1,4 +1,6 @@
 
+// Phaser 3 game instance
+
 const config = {
     type: Phaser.AUTO,
     width: 800,
@@ -6,6 +8,7 @@ const config = {
     backgroundColor: "#dddde8",
     parent: "game-container",
     pixelArt: true,
+    // scenes (configured in other js scripts)
     scene: [splash, instructions, level, info, question, main, panel, lose, win],
     physics: {
         default: "arcade",
@@ -20,6 +23,7 @@ const config = {
   
 const game = new Phaser.Game(config);
 
+// all possible destination buildings
 const BUILDINGS = {"dana": {
                        "message": "For added warmth, hit up the top floor of this building and enjoy the benefits of its 4,000-square-foot skylight.",
                        "display_name": "Dana Building",

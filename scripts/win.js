@@ -5,11 +5,12 @@ class win extends Phaser.Scene {
         super('winScene');
     }
     preload() {
-        //this.load.audio("win_music", "audio/clapGlee.mp3");
-        //this.load.image("home_alt", "assets/home_white.png");
+        // empty
+        // all game assets preloaded in splash.js
     }
     create() {
 
+      // text settings
       var wintext = this.add.text(100,100, 'Go Blue! You won.');
       var text = this.add.text(300,300, 'Click here to play again');
       text.setInteractive({ useHandCursor: true });
@@ -17,6 +18,7 @@ class win extends Phaser.Scene {
 
       this.cameras.main.setBackgroundColor("#000000");
 
+      // start win music
       let music_config = 
       {
           mute: this.game.sound.mute,
@@ -26,13 +28,17 @@ class win extends Phaser.Scene {
       }
       win_music.play(music_config);
 
+      // home button
       var home_link = this.add.image(400, 400, 'home_alt');
       home_link.setInteractive({ useHandCursor: true });
       home_link.on('pointerdown', () => this.homewin());
     }
+    
     update() {
-
+        // empty
     }
+    
+    // replay button function
     clickButton() {
         // replay: route to level page
         win_music.stop();
@@ -44,12 +50,10 @@ class win extends Phaser.Scene {
         this.scene.sendToBack('winScene');
         this.scene.stop('infoScene');
         this.scene.stop('questionScene');
-        // this.scene.start('gameScene');
-        // this.scene.start('infoScene');
-        // this.scene.start('panelScene');
-        //RESET_VISITED_BUILDINGS();
         
     }  
+
+    // home button function: route to home page
     homewin() {
         win_music.stop();
         this.scene.stop('gameScene');

@@ -7,6 +7,8 @@ class question extends Phaser.Scene {
     }
 
     preload() {
+        // empty
+        // all assets preloaded in splash.js
     }
     create() {
         instruction_text = 
@@ -19,6 +21,7 @@ class question extends Phaser.Scene {
 
         let instruction_title = "INSTRUCTIONS \n*(press any arrow key to resume game)* \n\n";
         
+        // area surrounding text box is transparent so game is visible
         this.cameras.main.transparent = true;
 
         // popup background
@@ -29,7 +32,6 @@ class question extends Phaser.Scene {
         drop_shadow.fillRoundedRect(25, 90, 750, 430, 5);
         
         // text settings
-
         this.add
         .text(200, 110, instruction_title, {
         font: "20px monospace",
@@ -46,12 +48,14 @@ class question extends Phaser.Scene {
         wordWrap: {width: 700},
         });
     }
+
     update() {
+        // display instructions text
         new_text.setText(instruction_text);
-        // resume game
+        // resume game on arrow key press
         if (cursors.right.isDown || cursors.left.isDown || cursors.up.isDown || cursors.down.isDown) {
             this.scene.resume('gameScene');
-            //this.scene.resume('panelScene');
+            // pause game timer, but panel remains accessible
             pause_time = false;
             this.scene.sendToBack('questionScene');
             

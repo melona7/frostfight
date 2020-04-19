@@ -10,15 +10,17 @@ class level extends Phaser.Scene {
     }
 
     preload() {
-
+        // empty
+        // all assets preloaded in splash.js
     }
 
     create() {
+        // black background
         this.cameras.main.setBackgroundColor("#000000");
 
         instr_text = this.add.text(240, 150, 'CHOOSE YOUR LEVEL:', {font: "36px monospace"});
 
-        //easy_text = this.add.text(100,470, 'Easy');
+        // level buttons
         easy_img = this.add.sprite(200, 350, "easy");
         medium_img = this.add.sprite(400, 350, 'medium');
         hard_img = this.add.sprite(600, 350, 'hard');
@@ -34,9 +36,10 @@ class level extends Phaser.Scene {
     }
 
     update() {
-
+        // empty
     }
 
+    // level buttons function
     select_level(level) {
         // set game time for level
         if (level === 'easy') {

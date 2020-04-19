@@ -3,18 +3,20 @@ class splash extends Phaser.Scene {
         super('titleScene');
     }
     preload() {
+
+        // LOADING ALL NECESSARY ASSETS FOR GAME
+
         this.load.image('background', 'assets/Frostfight.png');
         this.load.image('start', 'assets/start_button2.png');
         this.load.image('instructions', 'assets/instructions_button2.png');
-        //this.load.image('title', 'assets/title3.png');
         /* PLAYER SPRITE ASSESTS */
         this.load.atlas("title_atlas", "sprites/title/title_sheet.png", 
         "sprites/title/title_sheet.json");
 
         this.load.image("heatcontainer", "assets/heat_container.png");
-      this.load.image("heatbar", "assets/heat_bar_final.png");
+        this.load.image("heatbar", "assets/heat_bar_final.png");
 
-      /* AUDIO ASSETS Note: all music added here in panel*/ 
+      /* AUDIO ASSETS Note: all music added here, including backups*/ 
         this.load.audio('background_music', "audio/FightSongCutFinal.mp3");
         this.load.image('unmuted', "assets/unmuted.png");
         this.load.image('muted', "assets/muted.png");
@@ -68,6 +70,7 @@ class splash extends Phaser.Scene {
 
     }
     create() {
+        // title animation
         var bg = this.add.sprite(0,0,'background');
         bg.setOrigin(0,0);
 
@@ -85,6 +88,8 @@ class splash extends Phaser.Scene {
 
         var title = this.add.text(215, 235, 'A Race Against Winter', {font: '30px Courier', fill: '#ffffff'});
 
+        // delay start / instructions buttons until animation finished
+        // also gives time for game assets to load
         this.time.addEvent({
             delay: 6000,
             callback: function() {
@@ -103,22 +108,19 @@ class splash extends Phaser.Scene {
 
     }
     update() {
-
+        // empty
     }
+    
+    // Start button
     clickButton() {
-        // RESET_VISITED_BUILDINGS();
-        // this.scene.start('gameScene');
-        // this.scene.switch('gameScene');
-        // this.scene.bringToTop('gameScene');
-        // this.scene.start('infoScene');
-        // this.scene.start('panelScene');
-        // this.scene.start('questionScene');
         // route to level page
         this.scene.start('levelScene');
         this.scene.bringToTop('levelScene');
     }   
 
+    // Instructions button
     clickIn() {
+        // route to instructions page
         this.scene.start('instructionsScene');
         this.scene.switch('instructionsScene');
         this.scene.bringToTop('instructionsScene');
