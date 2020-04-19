@@ -32,13 +32,12 @@ class info extends Phaser.Scene {
         console.log(popup_text);
         console.log("LOC 2", loc);
 
-        info_text = this.add
-        .text(260, 210, popup_text, {
-        font: "18px monospace",
-        fill: "#000000",
-        align: 'left',
-        wordWrap: {width: 290},
-    })
+        info_text = this.add.text(260, 210, popup_text, {
+	        font: "18px monospace",
+	        fill: "#000000",
+	        align: 'left',
+	        wordWrap: {width: 290},
+    	})
 
         var handle = 'window' + this.count++;
 

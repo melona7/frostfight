@@ -9,8 +9,6 @@ let xcoord;
 let ycoord;
 let popup_text = "ok";
 let pause_time = false;
-//let all_buildings = ['dana', 'mason', 'hatcher', 'ugli', 'west quad', 'north quad', 'randall', 'seb',];
-//let all_buildings = "hey there";
 class main extends Phaser.Scene {
     constructor() {
         super('gameScene');
