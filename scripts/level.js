@@ -2,7 +2,7 @@ let easy_text;
 let medium_text;
 let hard_text;
 let instr_text;
-let game_time;
+let initial_game_time;
 
 class level extends Phaser.Scene {
     constructor() {
@@ -39,17 +39,17 @@ class level extends Phaser.Scene {
     select_level(level) {
         // set game time for level
         if (level === 'easy') {
-            game_time = 120;
+            initial_game_time = 120;
         }
         else if (level === 'medium') {
-            game_time = 60;
+            initial_game_time = 60;
         }
         // else if level === 'hard'
         else {
-            game_time = 30;
+            initial_game_time = 30;
         }
 
-        console.log("SETTING GAME TIME", game_time);
+        console.log("SETTING GAME TIME", initial_game_time);
 
         // start game
         RESET_VISITED_BUILDINGS();

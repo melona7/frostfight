@@ -51,7 +51,8 @@ class question extends Phaser.Scene {
         // resume game
         if (cursors.right.isDown || cursors.left.isDown || cursors.up.isDown || cursors.down.isDown) {
             this.scene.resume('gameScene');
-            this.scene.resume('panelScene');
+            //this.scene.resume('panelScene');
+            pause_time = false;
             this.scene.sendToBack('questionScene');
             
         }

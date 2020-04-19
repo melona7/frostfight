@@ -42,8 +42,8 @@ class panel extends Phaser.Scene {
       //   this.load.image("question", "assets/question.png");
     }
     create() {
-        //initialTime = game_time;
-        console.log("RECEIVED GAME TIME", game_time);
+        //initialTime = initial_game_time;
+        console.log("RECEIVED GAME TIME", initial_game_time);
         
         // start music
         music = this.sound.add('background_music');
@@ -109,7 +109,7 @@ class panel extends Phaser.Scene {
     
       //var text = this.add.text(50,50, 'scene2!');
       //timeLeft = gameOptions.initialTime;
-      timeLeft = game_time;
+      timeLeft = initial_game_time;
 
       // the energy container. A simple sprite
       let heatContainer = this.add.sprite(130, 35, "heatcontainer").setScrollFactor(0);
@@ -145,7 +145,7 @@ class panel extends Phaser.Scene {
                 // dividing enery bar width by the number of seconds gives us the amount
                 // of pixels we need to move the energy bar each second
                 //stepWidth = heatMask.displayWidth / gameOptions.initialTime;
-                stepWidth = heatMask.displayWidth / game_time;
+                stepWidth = heatMask.displayWidth / initial_game_time;
 
                 // moving the mask
                 
@@ -216,8 +216,11 @@ class panel extends Phaser.Scene {
 
     question() {
         this.scene.pause('gameScene');
-        this.scene.pause('panelScene');
+        //this.scene.pause('panelScene');
+        // keep panel live, just pause time
+        pause_time = true;
         this.scene.bringToTop('questionScene');
+
 
         //this.scene.switch('infoScene');
     //     popup_text = "INSTRUCTIONS\n " +
