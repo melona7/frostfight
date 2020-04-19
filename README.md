@@ -1,18 +1,18 @@
-#H1 Frost Fight
+# H1 Frost Fight
 Frost Fight is a game meant to help incoming students at the University of 
 Michigan - Ann Arbor to familiarize themselves with campus and prepare for winter.
 
-#H1 Configuration
+# H1 Configuration
 During development, we ran the game locally, using WAMP for Windows and MAMP for Mac operating systems.
 The game is now available through GitHub pages, at this link: https://melona7.github.io/frostfight/index.html.
 
-#H1 Operation
+# H1 Operation
 Once you follow the link, the game offers detailed instructions of how to play.
 
-#H1 Architecture
+# H1 Architecture
 Frost Fight was designed using the Phaser 3 JavaScript framework.
 
-#H1 Credits and Acknowledgments
+# H1 Credits and Acknowledgments
 Credit for the development of the game goes to Kate Carlton, Annie Nie, Logan Tidstrom, and Peter Yu at the University of Michigan.
 The developers used external resources for several of the assets used in the game. These are listed below:
 
