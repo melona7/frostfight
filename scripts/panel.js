@@ -16,6 +16,7 @@ let heatMask;
 let stepWidth;
 let destination;
 
+
 class panel extends Phaser.Scene {
     constructor() {
         super('panelScene');
@@ -132,32 +133,36 @@ class panel extends Phaser.Scene {
       let gameTimer = this.time.addEvent({
           delay: 1000,
           callback: function(){
-              //console.log("lmao");
-              timeLeft --;
+              console.log("TIMER STATUS", pause_time);
+              // check that game timer is not paused
+              if (!pause_time) {  
+                //console.log("lmao");
+                timeLeft --;
 
-              // dividing enery bar width by the number of seconds gives us the amount
-              // of pixels we need to move the energy bar each second
-              stepWidth = heatMask.displayWidth / gameOptions.initialTime;
+                // dividing enery bar width by the number of seconds gives us the amount
+                // of pixels we need to move the energy bar each second
+                stepWidth = heatMask.displayWidth / gameOptions.initialTime;
 
-              // moving the mask
-              
-              heatMask.x -= stepWidth;
-              //console.log(energyMask.x);
-              if(timeLeft == 0){
-                //stop somehow lol
-                RESET_VISITED_BUILDINGS();
-                this.scene.switch('loseScene');
-                this.scene.bringToTop('loseScene');
-                //this.scene.moveDown('gameScene');
-                //this.scene.stop('panelScene');
-                this.scene.stop('infoScene');
-                music.stop();
-                cursors.right.enable = false;
-                cursors.left.enable = false;
-                cursors.up.enable = false;
-                cursors.down.enable = false;
+                // moving the mask
+                
+                heatMask.x -= stepWidth;
+                //console.log(energyMask.x);
+                if(timeLeft == 0){
+                    //stop somehow lol
+                    RESET_VISITED_BUILDINGS();
+                    this.scene.switch('loseScene');
+                    this.scene.bringToTop('loseScene');
+                    //this.scene.moveDown('gameScene');
+                    //this.scene.stop('panelScene');
+                    this.scene.stop('infoScene');
+                    music.stop();
+                    cursors.right.enable = false;
+                    cursors.left.enable = false;
+                    cursors.up.enable = false;
+                    cursors.down.enable = false;
+                }
 
-              }
+            }
           },
           callbackScope: this,
           loop: true

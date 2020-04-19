@@ -8,6 +8,7 @@ let loc = "";
 let xcoord;
 let ycoord;
 let popup_text = "ok";
+let pause_time = false;
 //let all_buildings = ['dana', 'mason', 'hatcher', 'ugli', 'west quad', 'north quad', 'randall', 'seb',];
 //let all_buildings = "hey there";
 class main extends Phaser.Scene {
@@ -38,9 +39,16 @@ class main extends Phaser.Scene {
     create() {
         let all_buildings = Object.keys(BUILDINGS);
         console.log("possible keys", all_buildings);
-        var value = Phaser.Math.Between(0, all_buildings.length - 1);
-        loc = all_buildings[value];
-        console.log("random loc", loc);
+        // if came from loss then play again, maintain destination
+        if (maintain_destination) {
+            maintain_destination = false;
+        }
+        // otherwise, choose new destination
+        else {
+            var value = Phaser.Math.Between(0, all_buildings.length - 1);
+            loc = all_buildings[value];
+            console.log("random loc", loc);
+        }
         // add base tilemap layer (campus map)
         var map = this.make.tilemap({ key: 'map' });
         const tileset = map.addTilesetImage("campus_set", "tiles");
@@ -150,6 +158,7 @@ class main extends Phaser.Scene {
 
     }
 
+    // player loses when they step on block M
     tragedy(player, blockm) {
       this.scene.switch('loseScene');
             this.scene.bringToTop('loseScene');
@@ -195,7 +204,8 @@ class main extends Phaser.Scene {
         ycoord = star.y;
 
         this.scene.moveAbove('gameScene', 'infoScene');
-        this.scene.pause('panelScene');
+        //this.scene.pause('panelScene');
+        pause_time = true;
 
     }
 
@@ -243,6 +253,12 @@ class main extends Phaser.Scene {
         else if (prevVelocity.x > 0) player.setTexture("atlas", "freshman_right_standing.png");
         else if (prevVelocity.y < 0) player.setTexture("atlas", "freshman_back_standing.png");
         else if (prevVelocity.y > 0) player.setTexture("atlas", "freshman_front_standing.png");
+        }
+
+        // resume game timer
+        if (cursors.right.isDown || cursors.left.isDown || cursors.up.isDown || cursors.down.isDown) {
+            pause_time = false;
+            
         }
         
 
