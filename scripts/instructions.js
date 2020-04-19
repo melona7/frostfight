@@ -12,6 +12,8 @@ You can only get extra time from each hot spot once per game.",
  "Beware of the M on the diag - stepping on it is equivalent to failing both the game and your first blue book exam!",
 "If you get to your destination before time runs out, you've won the game! \
 Winter in Michigan will be no problem for you."];
+let next_text;
+let back_text; 
 
 let all_images = ["location", "keys", "", "", "blockm", "snow"];
 class instructions extends Phaser.Scene {
@@ -26,8 +28,9 @@ class instructions extends Phaser.Scene {
 
         this.cameras.main.setBackgroundColor("#000000");
         
-        var next_text = this.add.text(660,470, 'next');
-        var back_text = this.add.text(100,470, 'back');
+        next_text = this.add.text(660,470, 'next');
+        back_text = this.add.text(100,470, 'back');
+        back_text.setColor("#333333");
         var start = this.add.image(400,470, 'start_alt');
         console.log(all_instructions[index]);
 
@@ -78,7 +81,7 @@ class instructions extends Phaser.Scene {
     }
 
     next() {
-        
+   
         if (index < all_instructions.length - 1) {
             index += 1;
             this.tweens.add({
@@ -88,6 +91,14 @@ class instructions extends Phaser.Scene {
                 ease: 'Power2'
               }, this);
 
+            if (index > 0) {
+                back_text.setColor("#ffffff");
+            }
+            if (index == all_instructions.length - 1) {
+                next_text.setColor("#333333");
+                
+
+            }
               
             //this.add.tween(text).to( { alpha: 0 }, 2000, "Linear", true);
             instr.setText(all_instructions[index]);
@@ -104,6 +115,7 @@ class instructions extends Phaser.Scene {
             
 
             }
+            
             this.tweens.add({
                 targets: img, 
                 alpha: 1,
@@ -119,6 +131,8 @@ class instructions extends Phaser.Scene {
 
     }
     back() {
+
+        
         
         if (index > 0) {
             index -= 1;
@@ -129,7 +143,12 @@ class instructions extends Phaser.Scene {
                 ease: 'Power2'
               }, this);
 
-              
+            if (index < all_instructions.length-1) {
+                next_text.setColor("#ffffff");
+            }
+            if(index == 0) {
+                back_text.setColor("#333333");
+            }
             //this.add.tween(text).to( { alpha: 0 }, 2000, "Linear", true);
             instr.setText(all_instructions[index]);
             console.log(all_images[index]);
